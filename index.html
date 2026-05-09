@@ -1,4 +1,2047 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reel Queens & Father's Day Fishing Prompt Generator</title>
+<style>
+:root {
+  --blue:#0b2cff; --gold:#f7c948; --black:#050510; --white:#fff; --pink:#ff3fa4; --teal:#00d8ff;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at top,#1230a8 0,#050510 46%,#000 100%);color:var(--white);}
+header{
+  padding:36px 18px 30px;
+  text-align:center;
+  border-bottom:2px solid rgba(247,201,72,.65);
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255,63,164,.25), transparent 24%),
+    radial-gradient(circle at 80% 0%, rgba(0,216,255,.22), transparent 28%),
+    linear-gradient(135deg,rgba(5,5,16,.96),rgba(7,27,104,.92),rgba(5,5,16,.96));
+  position:relative;
+  overflow:hidden;
+}
+h1{
+  margin:0;
+  font-size:clamp(2.1rem,5vw,4.6rem);
+  color:#fff;
+  letter-spacing:.04em;
+  font-weight:1000;
+  text-transform:uppercase;
+  -webkit-text-stroke:2px rgba(247,201,72,.9);
+  text-shadow:
+    0 0 4px #fff,
+    0 0 12px #ff3fa4,
+    0 0 22px #0b2cff,
+    0 0 36px #00d8ff,
+    0 8px 0 rgba(0,0,0,.5);
+}
+.subtitle{margin:8px auto 0;max-width:850px;color:#f7f2d7}
+.tabs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:18px}
+.tab-btn,.btn{border:1px solid var(--gold);background:#080821;color:#fff;padding:12px 16px;border-radius:999px;cursor:pointer;font-weight:800;box-shadow:0 0 12px rgba(247,201,72,.25)}
+.tab-btn.active,.btn.primary{background:linear-gradient(135deg,var(--blue),#111,var(--gold));color:#fff}
+main{max-width:1250px;margin:0 auto;padding:20px}
+.panel{display:none} .panel.active{display:block}
+.hero,.card,.control-card{background:rgba(255,255,255,.07);border:1px solid rgba(247,201,72,.35);border-radius:22px;padding:20px;margin:14px 0;box-shadow:0 15px 40px rgba(0,0,0,.35)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+label{display:block;font-weight:800;color:var(--gold);font-size:.92rem;margin-bottom:7px}
+select,input,textarea{width:100%;padding:12px;border-radius:14px;border:1px solid rgba(247,201,72,.45);background:#070714;color:#fff;outline:none}
+textarea{min-height:160px;resize:vertical;line-height:1.45}
+input[type=color]{height:44px;padding:4px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.output{white-space:pre-wrap;background:#020208;border:1px solid var(--gold);border-radius:18px;padding:18px;min-height:220px;line-height:1.5;color:#f8f8f8}
+.home-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.big-card{min-height:220px;background:linear-gradient(135deg,rgba(255,63,164,.16),rgba(11,44,255,.18));border:1px solid var(--gold);border-radius:24px;padding:22px}
+.saved-card{background:#070714;border:1px solid rgba(247,201,72,.35);border-radius:16px;padding:14px;margin:12px 0}
+.small{font-size:.85rem;color:#ddd}
+details{background:rgba(0,0,0,.25);border:1px solid rgba(247,201,72,.3);border-radius:16px;padding:12px;margin:10px 0}
+summary{cursor:pointer;color:var(--gold);font-weight:900}
+footer{padding:24px;text-align:center;color:#ddd}
+.sparkle{color:var(--gold)}
+
+.field-wrap{position:relative;background:rgba(0,0,0,.18);border:1px solid rgba(247,201,72,.18);border-radius:18px;padding:12px}
+.field-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:7px}
+.field-head label{margin:0}
+.lock-btn{border:1px solid rgba(247,201,72,.55);background:#0b0b20;color:#fff;border-radius:999px;padding:7px 10px;cursor:pointer;font-weight:900;font-size:.82rem}
+.lock-btn.locked{background:linear-gradient(135deg,#f7c948,#815d00);color:#050510}
+.custom-input{margin-top:8px;font-size:.9rem}
+.cycle-note{font-size:.82rem;color:#f7f2d7;margin-top:8px}
+
+
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 15% 12%, rgba(255,63,164,.22), transparent 22%),
+    radial-gradient(circle at 85% 16%, rgba(0,216,255,.18), transparent 24%),
+    radial-gradient(circle at 50% 85%, rgba(247,201,72,.16), transparent 30%),
+    linear-gradient(135deg,#04040c 0%,#06174d 38%,#050510 72%,#000 100%);
+  background-size: 180% 180%;
+  animation: lakeGlow 18s ease-in-out infinite;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-2;
+  background:
+    repeating-linear-gradient(120deg, rgba(255,255,255,.035) 0 1px, transparent 1px 42px),
+    radial-gradient(circle at 25% 30%, rgba(0,216,255,.08), transparent 18%),
+    radial-gradient(circle at 70% 70%, rgba(255,63,164,.08), transparent 20%);
+  animation: waterShift 22s linear infinite;
+}
+body::after{
+  content:"🎣  🐟  ✨  💦  🪝  ⭐  🌊";
+  position:fixed;
+  left:-10%;
+  top:18%;
+  width:120%;
+  pointer-events:none;
+  z-index:-1;
+  opacity:.18;
+  font-size:clamp(2rem,5vw,5rem);
+  letter-spacing:1.6rem;
+  filter:drop-shadow(0 0 12px #00d8ff) drop-shadow(0 0 20px #ff3fa4);
+  animation: floatTheme 16s ease-in-out infinite alternate;
+}
+@keyframes lakeGlow{
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+}
+@keyframes waterShift{
+  0%{transform:translate3d(0,0,0)}
+  50%{transform:translate3d(-2%,1%,0)}
+  100%{transform:translate3d(0,0,0)}
+}
+@keyframes floatTheme{
+  0%{transform:translateY(0) rotate(-2deg)}
+  100%{transform:translateY(160px) rotate(2deg)}
+}
+header::before{
+  content:"";
+  position:absolute;
+  inset:-40%;
+  background:
+    radial-gradient(circle, rgba(247,201,72,.22) 0 2px, transparent 3px),
+    radial-gradient(circle, rgba(0,216,255,.18) 0 2px, transparent 3px),
+    radial-gradient(circle, rgba(255,63,164,.20) 0 2px, transparent 3px);
+  background-size:80px 80px,120px 120px,150px 150px;
+  animation:sparkleDrift 20s linear infinite;
+  pointer-events:none;
+}
+@keyframes sparkleDrift{
+  from{transform:translateY(0) rotate(0deg)}
+  to{transform:translateY(120px) rotate(18deg)}
+}
+.subtitle{
+  position:relative;
+  z-index:1;
+  font-size:1.02rem;
+}
+.tabs{
+  position:relative;
+  z-index:1;
+}
+.tab-btn,.btn{
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.tab-btn:hover,.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 0 18px rgba(247,201,72,.5),0 0 32px rgba(0,216,255,.25);
+}
+.hero,.card,.control-card,.big-card{
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(247,201,72,.5);
+  box-shadow:
+    0 18px 55px rgba(0,0,0,.45),
+    inset 0 0 22px rgba(255,255,255,.045),
+    0 0 28px rgba(11,44,255,.18);
+}
+.field-wrap{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.035)),
+    radial-gradient(circle at top right,rgba(0,216,255,.11),transparent 38%),
+    radial-gradient(circle at bottom left,rgba(255,63,164,.09),transparent 34%);
+  border:1px solid rgba(247,201,72,.42);
+  box-shadow:0 0 18px rgba(247,201,72,.12), inset 0 0 18px rgba(0,216,255,.045);
+}
+.field-wrap:focus-within{
+  border-color:#f7c948;
+  box-shadow:0 0 22px rgba(247,201,72,.32),0 0 30px rgba(0,216,255,.16);
+}
+select{
+  max-height:48px;
+  overflow:auto;
+  cursor:pointer;
+}
+select,input,textarea{
+  background:rgba(2,2,10,.92);
+  box-shadow:inset 0 0 14px rgba(0,216,255,.08);
+}
+.output{
+  max-height:520px;
+  overflow:auto;
+  box-shadow:inset 0 0 22px rgba(0,216,255,.10),0 0 20px rgba(247,201,72,.16);
+}
+.side-scroll{
+  position:fixed;
+  right:18px;
+  z-index:20;
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  border:2px solid rgba(247,201,72,.9);
+  background:radial-gradient(circle at 30% 25%,#fff,#f7c948 22%,#0b2cff 58%,#050510 100%);
+  color:#fff;
+  font-size:1.55rem;
+  font-weight:1000;
+  cursor:pointer;
+  box-shadow:
+    0 0 12px #f7c948,
+    0 0 25px rgba(0,216,255,.8),
+    0 0 42px rgba(255,63,164,.45);
+  transition:transform .2s ease, filter .2s ease;
+}
+.side-scroll:hover{
+  transform:scale(1.08);
+  filter:brightness(1.18);
+}
+#scrollTopBtn{bottom:92px}
+#scrollBottomBtn{bottom:24px}
+@media(max-width:700px){
+  .side-scroll{right:10px;width:48px;height:48px;font-size:1.25rem}
+  #scrollTopBtn{bottom:82px}
+  #scrollBottomBtn{bottom:24px}
+  main{padding:14px 10px}
+}
+
+
+.glam-marquee{
+  position:relative;
+  z-index:2;
+  width:min(980px,92vw);
+  margin:14px auto 10px;
+  overflow:hidden;
+  border:1px solid rgba(247,201,72,.65);
+  border-radius:999px;
+  background:linear-gradient(90deg,rgba(5,5,16,.8),rgba(11,44,255,.45),rgba(5,5,16,.8));
+  box-shadow:0 0 18px rgba(247,201,72,.35), inset 0 0 18px rgba(255,255,255,.06);
+}
+.glam-marquee-track{
+  display:inline-block;
+  white-space:nowrap;
+  padding:10px 0;
+  color:#fff8dc;
+  font-weight:900;
+  letter-spacing:.04em;
+  text-shadow:0 0 10px #f7c948,0 0 18px #ff3fa4;
+  animation:marqueeMove 18s linear infinite;
+}
+@keyframes marqueeMove{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+
+.video-script-section{
+  margin-top:22px;
+  padding:18px;
+  border-radius:22px;
+  border:1px solid rgba(0,216,255,.45);
+  background:
+    radial-gradient(circle at top left,rgba(0,216,255,.12),transparent 34%),
+    radial-gradient(circle at bottom right,rgba(255,63,164,.10),transparent 34%),
+    rgba(255,255,255,.055);
+  box-shadow:0 0 24px rgba(0,216,255,.16), inset 0 0 20px rgba(255,255,255,.04);
+}
+.video-output{
+  min-height:170px;
+  border-color:rgba(0,216,255,.75);
+}
+
+
+.color-field-wrap{
+  position:relative;
+}
+.color-row{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.color-row input[type=color]{
+  flex:1;
+}
+
+
+.suno-section{
+  margin-top:24px;
+  padding:20px;
+  border-radius:24px;
+  border:1px solid rgba(247,201,72,.58);
+  background:
+    radial-gradient(circle at top left, rgba(247,201,72,.14), transparent 34%),
+    radial-gradient(circle at top right, rgba(0,216,255,.12), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(255,63,164,.10), transparent 34%),
+    rgba(255,255,255,.055);
+  box-shadow:0 0 26px rgba(247,201,72,.20), inset 0 0 22px rgba(255,255,255,.045);
+}
+.suno-control-box{
+  margin:16px 0;
+  padding:16px;
+  border-radius:20px;
+  border:1px solid rgba(0,216,255,.35);
+  background:rgba(0,0,0,.25);
+}
+.chip-grid{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin:10px 0;
+}
+.music-chip{
+  border:1px solid rgba(247,201,72,.62);
+  background:linear-gradient(135deg, rgba(8,8,33,.95), rgba(11,44,255,.35));
+  color:#fff;
+  border-radius:999px;
+  padding:9px 12px;
+  cursor:pointer;
+  font-weight:800;
+  font-size:.9rem;
+  box-shadow:0 0 10px rgba(247,201,72,.13);
+  transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+.music-chip:hover{
+  transform:translateY(-1px);
+  box-shadow:0 0 16px rgba(247,201,72,.35);
+}
+.music-chip.selected{
+  background:linear-gradient(135deg,#f7c948,#ff3fa4,#0b2cff);
+  color:#050510;
+  box-shadow:0 0 18px rgba(247,201,72,.52),0 0 24px rgba(255,63,164,.28);
+}
+.slider-row{
+  display:grid;
+  grid-template-columns:170px 1fr 60px;
+  align-items:center;
+  gap:12px;
+  margin:12px 0;
+}
+.slider-row input[type=range]{
+  accent-color:#f7c948;
+}
+.suno-output{
+  min-height:220px;
+  border-color:rgba(247,201,72,.82);
+}
+@media(max-width:700px){
+  .slider-row{grid-template-columns:1fr}
+}
+
+
+.marketing-suite{
+  margin-top:24px;
+  padding:20px;
+  border-radius:24px;
+  border:1px solid rgba(255,63,164,.58);
+  background:
+    radial-gradient(circle at top left, rgba(255,63,164,.14), transparent 34%),
+    radial-gradient(circle at top right, rgba(247,201,72,.12), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(0,216,255,.10), transparent 34%),
+    rgba(255,255,255,.055);
+  box-shadow:0 0 26px rgba(255,63,164,.18), inset 0 0 22px rgba(255,255,255,.045);
+}
+.marketing-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:14px;
+  margin-top:14px;
+}
+.marketing-card{
+  padding:14px;
+  border-radius:18px;
+  border:1px solid rgba(247,201,72,.38);
+  background:rgba(0,0,0,.28);
+  box-shadow:inset 0 0 18px rgba(0,216,255,.045);
+}
+.marketing-card h4{
+  margin:0 0 10px;
+  color:#f7c948;
+}
+.marketing-output{
+  min-height:170px;
+  max-height:320px;
+  overflow:auto;
+  font-size:.92rem;
+  border-color:rgba(255,63,164,.72);
+}
+
+
+.custom-gpt-suite{
+  margin-top:24px;
+  padding:20px;
+  border-radius:24px;
+  border:1px solid rgba(0,216,255,.58);
+  background:
+    radial-gradient(circle at top left, rgba(0,216,255,.14), transparent 34%),
+    radial-gradient(circle at top right, rgba(247,201,72,.12), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(255,63,164,.10), transparent 34%),
+    rgba(255,255,255,.055);
+  box-shadow:0 0 26px rgba(0,216,255,.18), inset 0 0 22px rgba(255,255,255,.045);
+}
+.custom-gpt-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:14px;
+  margin-top:14px;
+}
+.custom-gpt-card{
+  padding:14px;
+  border-radius:18px;
+  border:1px solid rgba(247,201,72,.38);
+  background:rgba(0,0,0,.28);
+  box-shadow:inset 0 0 18px rgba(255,63,164,.045);
+}
+.custom-gpt-card h4{
+  margin:0 0 10px;
+  color:#f7c948;
+}
+.custom-gpt-output{
+  min-height:240px;
+  max-height:420px;
+  overflow:auto;
+  font-size:.92rem;
+  border-color:rgba(0,216,255,.72);
+}
+
+</style>
+</head>
+<body>
+<header>
+  <h1>🎣 Reel Queens & Father’s Day Fishing Prompt Generator</h1>
+  <div class="glam-marquee"><div class="glam-marquee-track">✨Scroll-Stopping Content  • Premium Images • Because We’re Not Here to Look Broke ✨ &nbsp;&nbsp;&nbsp; ✨Scroll-Stopping Content  • Premium Images • Because We’re Not Here to Look Broke ✨</div></div>
+  <p class="subtitle">A 2-in-1 fishing graphic prompt generator for women who fish and Father’s Day gifts — shirts, mugs, stickers, tumblers, PNGs, DTF transfers, decals, and more.</p>
+  <nav class="tabs">
+    <button class="tab-btn active" data-tab="home">Home</button>
+    <button class="tab-btn" data-tab="women">Women Who Fish</button>
+    <button class="tab-btn" data-tab="dad">Father’s Day Fishing</button>
+    <button class="tab-btn" data-tab="saved">Saved Prompts</button>
+    <button class="tab-btn" data-tab="howto">How To Use</button>
+  </nav>
+</header>
+
+<main>
+<section id="home" class="panel active">
+  <div class="hero">
+    <h2>Build bold fishing graphics without staring at blank boxes like “now what the hell do I pick?”</h2>
+    <p>Choose a mini-generator, pick your style, hit generate, and copy a polished prompt for AI image tools.</p>
+    <div class="home-cards">
+      <div class="big-card">
+        <h3>💅 Women Who Fish</h3>
+        <p>Glitter, glam, sass, pink camo, sunglasses, bass baddie energy, and funny fishing slogans.</p>
+        <button class="btn primary" onclick="openTab('women')">Open Women Generator</button>
+      </div>
+      <div class="big-card">
+        <h3>🎁 Father’s Day Fishing</h3>
+        <p>Dad humor, rustic outdoors, vintage lake-life graphics, grandpa gifts, and Father’s Day merch prompts.</p>
+        <button class="btn primary" onclick="openTab('dad')">Open Dad Generator</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="women" class="panel">
+  <div class="hero"><h2>💅 Women Who Fish Mini-Generator</h2><p>Create bold, glam, funny, fish-loving graphics for shirts, stickers, mugs, tumblers, PNGs, and DTF designs.</p></div>
+  <div id="womenForm" class="grid"></div>
+  <div class="control-card">
+    <div class="grid">
+      <div><label>Main Text / Slogan</label><input id="women_mainText" placeholder="Example: REEL GIRLS FISH"></div>
+      <div><label>Subtext</label><input id="women_subText" placeholder="Example: Lake Life Looks Good On Me"></div>
+      <div><label>Preset Slogan</label><select id="women_preset"></select></div>
+      <div><label>Custom Extra Details</label><input id="women_custom" placeholder="Add anything special"></div>
+      <div class="color-field-wrap">
+          <div class="field-head">
+            <label>Primary Color</label>
+            <button type="button" class="lock-btn" id="women_primary_lock" onclick="toggleColorLock('women_primary')">🔓 Lock</button>
+          </div>
+          <div class="color-row"><input id="women_primary" type="color" value="#ff3fa4"></div>
+        </div>
+      <div class="color-field-wrap">
+          <div class="field-head">
+            <label>Secondary Color</label>
+            <button type="button" class="lock-btn" id="women_secondary_lock" onclick="toggleColorLock('women_secondary')">🔓 Lock</button>
+          </div>
+          <div class="color-row"><input id="women_secondary" type="color" value="#00d8ff"></div>
+        </div>
+      <div class="color-field-wrap">
+          <div class="field-head">
+            <label>Accent Color</label>
+            <button type="button" class="lock-btn" id="women_accent_lock" onclick="toggleColorLock('women_accent')">🔓 Lock</button>
+          </div>
+          <div class="color-row"><input id="women_accent" type="color" value="#f7c948"></div>
+        </div>
+      <div class="color-field-wrap">
+          <div class="field-head">
+            <label>Text Color</label>
+            <button type="button" class="lock-btn" id="women_textColor_lock" onclick="toggleColorLock('women_textColor')">🔓 Lock</button>
+          </div>
+          <div class="color-row"><input id="women_textColor" type="color" value="#ffffff"></div>
+        </div>
+      <div class="color-field-wrap">
+          <div class="field-head">
+            <label>Glow Color</label>
+            <button type="button" class="lock-btn" id="women_glow_lock" onclick="toggleColorLock('women_glow')">🔓 Lock</button>
+          </div>
+          <div class="color-row"><input id="women_glow" type="color" value="#ff3fa4"></div>
+        </div>
+      <div class="color-field-wrap">
+          <div class="field-head">
+            <label>Background Color</label>
+            <button type="button" class="lock-btn" id="women_bg_lock" onclick="toggleColorLock('women_bg')">🔓 Lock</button>
+          </div>
+          <div class="color-row"><input id="women_bg" type="color" value="#050510"></div>
+        </div>
+    </div>
+    <div class="actions">
+      <button class="btn primary" onclick="generatePrompt('women')">Generate Prompt</button>
+      <button class="btn" onclick="copyPrompt('women')">Copy Prompt</button>
+      <button class="btn" onclick="clearForm('women')">Clear All</button>
+      <button class="btn" onclick="smartRandom('women')">Smart Random</button>
+      <button class="btn" onclick="savePrompt('women')">Save Prompt</button>
+      <button class="btn" onclick="variations('women')">3 More Variations</button>
+      <button class="btn" onclick="qualityCheck('women')">Prompt Quality Checker</button>
+    </div>
+    <h3>Prompt Output</h3><div id="women_output" class="output"></div>
+
+    <div class="video-script-section">
+      <h3>🎬 8-Second Animated Video Script</h3>
+      <p class="small">Uses the main generated prompt as the source. Creates a short animation action script, not a separate image prompt.</p>
+      <div class="actions">
+        <button class="btn primary" onclick="generateVideoScript('women')">Generate Video Script</button>
+        <button class="btn" onclick="copyVideoScript('women')">Copy Video Script</button>
+      </div>
+      <div id="women_video_output" class="output video-output"></div>
+    </div>
+
+    <div class="marketing-suite" id="women_marketing_suite">
+      <h3>📣 Marketing Content Suite</h3>
+      <p class="small">Connected to the main generated prompt. Creates traffic-focused promo content for selling the selected fishing product and bringing buyers to your webpage.</p>
+      <div class="actions">
+        <button class="btn primary" onclick="generateMarketingSuite('women')">Generate Marketing Content Suite</button>
+        <button class="btn" onclick="copyAllMarketing('women')">Copy Full Marketing Suite</button>
+        <button class="btn" onclick="clearMarketingSuite('women')">Clear Marketing Suite</button>
+      </div>
+      <div class="marketing-grid">
+                <div class="marketing-card">
+          <h4>Captions</h4>
+          <div id="women_marketing_captions" class="output marketing-output"></div>
+          <button class="btn" onclick="copyMarketingBlock('women','captions')">Copy Captions</button>
+        </div>
+        <div class="marketing-card">
+          <h4>Hashtags</h4>
+          <div id="women_marketing_hashtags" class="output marketing-output"></div>
+          <button class="btn" onclick="copyMarketingBlock('women','hashtags')">Copy Hashtags</button>
+        </div>
+        <div class="marketing-card">
+          <h4>SEO Keywords</h4>
+          <div id="women_marketing_seo" class="output marketing-output"></div>
+          <button class="btn" onclick="copyMarketingBlock('women','seo')">Copy SEO Keywords</button>
+        </div>
+        <div class="marketing-card">
+          <h4>Calls to Action</h4>
+          <div id="women_marketing_cta" class="output marketing-output"></div>
+          <button class="btn" onclick="copyMarketingBlock('women','cta')">Copy Calls to Action</button>
+        </div>
+        <div class="marketing-card">
+          <h4>Email Promo Copy</h4>
+          <div id="women_marketing_email" class="output marketing-output"></div>
+          <button class="btn" onclick="copyMarketingBlock('women','email')">Copy Email Promo Copy</button>
+        </div>
+        <div class="marketing-card">
+          <h4>Pinterest Promo Copy</h4>
+          <div id="women_marketing_pinterest" class="output marketing-output"></div>
+          <button class="btn" onclick="copyMarketingBlock('women','pinterest')">Copy Pinterest Promo Copy</button>
+        </div>
+        <div class="marketing-card">
+          <h4>TikTok Promo Copy</h4>
+          <div id="women_marketing_tiktok" class="output marketing-output"></div>
+          <button class="btn" onclick="copyMarketingBlock('women','tiktok')">Copy TikTok Promo Copy</button>
+        </div>
+        <div class="marketing-card">
+          <h4>Facebook Promo Copy</h4>
+          <div id="women_marketing_facebook" class="output marketing-output"></div>
+          <button class="btn" onclick="copyMarketingBlock('women','facebook')">Copy Facebook Promo Copy</button>
+        </div>
+        <div class="marketing-card">
+          <h4>Instagram Promo Copy</h4>
+          <div id="women_marketing_instagram" class="output marketing-output"></div>
+          <button class="btn" onclick="copyMarketingBlock('women','instagram')">Copy Instagram Promo Copy</button>
+        </div>
+        <div class="marketing-card">
+          <h4>YouTube Promo Copy</h4>
+          <div id="women_marketing_youtube" class="output marketing-output"></div>
+          <button class="btn" onclick="copyMarketingBlock('women','youtube')">Copy YouTube Promo Copy</button>
+        </div>
+        <div class="marketing-card">
+          <h4>Ad Copy</h4>
+          <div id="women_marketing_ad" class="output marketing-output"></div>
+          <button class="btn" onclick="copyMarketingBlock('women','ad')">Copy Ad Copy</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="custom-gpt-suite" id="women_custom_gpt_suite">
+      <h3>🤖 Custom GPT Instructions</h3>
+      <p class="small">Creates Custom GPT setup content based on this exact fishing generator structure, categories, prompt logic, art style, product use, and output flow.</p>
+      <div class="actions">
+        <button class="btn primary" onclick="generateCustomGPTSuite('women')">Generate Custom GPT Instructions</button>
+        <button class="btn" onclick="clearCustomGPTSuite('women')">Clear Custom GPT Instructions</button>
+      </div>
+      <div class="custom-gpt-grid">
+        <div class="custom-gpt-card">
+          <h4>Custom GPT Instructions</h4>
+          <div id="women_custom_gpt_instructions" class="output custom-gpt-output"></div>
+          <button class="btn" onclick="copyCustomGPTBlock('women','instructions')">Copy Custom GPT Instructions</button>
+        </div>
+        <div class="custom-gpt-card">
+          <h4>Starter Questions</h4>
+          <div id="women_custom_gpt_starters" class="output custom-gpt-output"></div>
+          <button class="btn" onclick="copyCustomGPTBlock('women','starters')">Copy Starter Questions</button>
+        </div>
+        <div class="custom-gpt-card">
+          <h4>Knowledge</h4>
+          <div id="women_custom_gpt_knowledge" class="output custom-gpt-output"></div>
+          <button class="btn" onclick="copyCustomGPTBlock('women','knowledge')">Copy Knowledge</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="suno-section" id="women_suno_section">
+      <h3>🎵 Suno Music Controls</h3>
+      <p class="small">Interactive music prompt builder connected to the main generated prompt. Pick chips, move sliders, then generate a Suno-ready music direction.</p>
+
+      <div class="suno-control-box">
+        <h4>Genre Selection</h4>
+        <p class="small">Multi-select. Choose one or stack a few together.</p>
+        <div class="chip-grid" id="women_genre_chips"></div>
+        <input class="custom-input" id="women_genre_custom" placeholder="Custom genre blend">
+      </div>
+
+      <div class="suno-control-box">
+        <h4>Style Influence Selection</h4>
+        <p class="small">Multi-select. Style influence references only — not literal imitation.</p>
+        <div class="chip-grid" id="women_style_chips"></div>
+        <input class="custom-input" id="women_style_custom" placeholder="Custom style influence or vibe">
+      </div>
+
+      <div class="suno-control-box">
+        <h4>Audio Settings</h4>
+        <div class="slider-row">
+          <label>Weirdness</label>
+          <input type="range" id="women_weirdness" min="0" max="100" value="35" oninput="updateSunoSliderValues('women')">
+          <strong id="women_weirdness_value">35%</strong>
+        </div>
+        <div class="slider-row">
+          <label>Style Influence</label>
+          <input type="range" id="women_styleInfluence" min="0" max="100" value="65" oninput="updateSunoSliderValues('women')">
+          <strong id="women_styleInfluence_value">65%</strong>
+        </div>
+        <div class="slider-row">
+          <label>Audio Influence</label>
+          <input type="range" id="women_audioInfluence" min="0" max="100" value="55" oninput="updateSunoSliderValues('women')">
+          <strong id="women_audioInfluence_value">55%</strong>
+        </div>
+        <input class="custom-input" id="women_audio_custom" placeholder="Custom audio direction">
+      </div>
+
+      <div class="suno-control-box">
+        <h4>Vocal Type</h4>
+        <div class="chip-grid" id="women_vocal_chips"></div>
+        <input class="custom-input" id="women_vocal_custom" placeholder="Custom vocal direction">
+      </div>
+
+      <div class="actions">
+        <button class="btn primary" onclick="generateSunoMusic('women')">Generate Suno Music Prompt</button>
+        <button class="btn" onclick="copySunoMusic('women')">Copy Suno Music Prompt</button>
+      </div>
+
+      <div id="women_suno_output" class="output suno-output"></div>
+    </div>
+  </div>
+</section>
+
+<section id="dad" class="panel">
+  <div class="hero"><h2>🎁 Father’s Day Fishing Mini-Generator</h2><p>Create rustic, funny, gift-ready dad fishing graphics for Father’s Day products and POD designs.</p></div>
+  <div id="dadForm" class="grid"></div>
+  <div class="control-card">
+    <div class="grid">
+      <div><label>Main Text / Slogan</label><input id="dad_mainText" placeholder="Example: BEST DAD BY A REEL LONG SHOT"></div>
+      <div><label>Subtext</label><input id="dad_subText" placeholder="Example: Father’s Day 2026"></div>
+      <div><label>Preset Slogan</label><select id="dad_preset"></select></div>
+      <div><label>Custom Extra Details</label><input id="dad_custom" placeholder="Add anything special"></div>
+      <div class="color-field-wrap">
+          <div class="field-head">
+            <label>Primary Color</label>
+            <button type="button" class="lock-btn" id="dad_primary_lock" onclick="toggleColorLock('dad_primary')">🔓 Lock</button>
+          </div>
+          <div class="color-row"><input id="dad_primary" type="color" value="#0b2cff"></div>
+        </div>
+      <div class="color-field-wrap">
+          <div class="field-head">
+            <label>Secondary Color</label>
+            <button type="button" class="lock-btn" id="dad_secondary_lock" onclick="toggleColorLock('dad_secondary')">🔓 Lock</button>
+          </div>
+          <div class="color-row"><input id="dad_secondary" type="color" value="#f7c948"></div>
+        </div>
+      <div class="color-field-wrap">
+          <div class="field-head">
+            <label>Accent Color</label>
+            <button type="button" class="lock-btn" id="dad_accent_lock" onclick="toggleColorLock('dad_accent')">🔓 Lock</button>
+          </div>
+          <div class="color-row"><input id="dad_accent" type="color" value="#ff7a18"></div>
+        </div>
+      <div class="color-field-wrap">
+          <div class="field-head">
+            <label>Text Color</label>
+            <button type="button" class="lock-btn" id="dad_textColor_lock" onclick="toggleColorLock('dad_textColor')">🔓 Lock</button>
+          </div>
+          <div class="color-row"><input id="dad_textColor" type="color" value="#ffffff"></div>
+        </div>
+      <div class="color-field-wrap">
+          <div class="field-head">
+            <label>Glow Color</label>
+            <button type="button" class="lock-btn" id="dad_glow_lock" onclick="toggleColorLock('dad_glow')">🔓 Lock</button>
+          </div>
+          <div class="color-row"><input id="dad_glow" type="color" value="#f7c948"></div>
+        </div>
+      <div class="color-field-wrap">
+          <div class="field-head">
+            <label>Background Color</label>
+            <button type="button" class="lock-btn" id="dad_bg_lock" onclick="toggleColorLock('dad_bg')">🔓 Lock</button>
+          </div>
+          <div class="color-row"><input id="dad_bg" type="color" value="#050510"></div>
+        </div>
+    </div>
+    <div class="actions">
+      <button class="btn primary" onclick="generatePrompt('dad')">Generate Prompt</button>
+      <button class="btn" onclick="copyPrompt('dad')">Copy Prompt</button>
+      <button class="btn" onclick="clearForm('dad')">Clear All</button>
+      <button class="btn" onclick="smartRandom('dad')">Smart Random</button>
+      <button class="btn" onclick="savePrompt('dad')">Save Prompt</button>
+      <button class="btn" onclick="variations('dad')">3 More Variations</button>
+      <button class="btn" onclick="qualityCheck('dad')">Prompt Quality Checker</button>
+    </div>
+    <h3>Prompt Output</h3><div id="dad_output" class="output"></div>
+
+    <div class="video-script-section">
+      <h3>🎬 8-Second Animated Video Script</h3>
+      <p class="small">Uses the main generated prompt as the source. Creates a short animation action script, not a separate image prompt.</p>
+      <div class="actions">
+        <button class="btn primary" onclick="generateVideoScript('dad')">Generate Video Script</button>
+        <button class="btn" onclick="copyVideoScript('dad')">Copy Video Script</button>
+      </div>
+      <div id="dad_video_output" class="output video-output"></div>
+    </div>
+
+    <div class="marketing-suite" id="dad_marketing_suite">
+      <h3>📣 Marketing Content Suite</h3>
+      <p class="small">Connected to the main generated prompt. Creates traffic-focused promo content for selling the selected fishing product and bringing buyers to your webpage.</p>
+      <div class="actions">
+        <button class="btn primary" onclick="generateMarketingSuite('dad')">Generate Marketing Content Suite</button>
+        <button class="btn" onclick="copyAllMarketing('dad')">Copy Full Marketing Suite</button>
+        <button class="btn" onclick="clearMarketingSuite('dad')">Clear Marketing Suite</button>
+      </div>
+      <div class="marketing-grid">
+                <div class="marketing-card">
+          <h4>Captions</h4>
+          <div id="dad_marketing_captions" class="output marketing-output"></div>
+          <button class="btn" onclick="copyMarketingBlock('dad','captions')">Copy Captions</button>
+        </div>
+        <div class="marketing-card">
+          <h4>Hashtags</h4>
+          <div id="dad_marketing_hashtags" class="output marketing-output"></div>
+          <button class="btn" onclick="copyMarketingBlock('dad','hashtags')">Copy Hashtags</button>
+        </div>
+        <div class="marketing-card">
+          <h4>SEO Keywords</h4>
+          <div id="dad_marketing_seo" class="output marketing-output"></div>
+          <button class="btn" onclick="copyMarketingBlock('dad','seo')">Copy SEO Keywords</button>
+        </div>
+        <div class="marketing-card">
+          <h4>Calls to Action</h4>
+          <div id="dad_marketing_cta" class="output marketing-output"></div>
+          <button class="btn" onclick="copyMarketingBlock('dad','cta')">Copy Calls to Action</button>
+        </div>
+        <div class="marketing-card">
+          <h4>Email Promo Copy</h4>
+          <div id="dad_marketing_email" class="output marketing-output"></div>
+          <button class="btn" onclick="copyMarketingBlock('dad','email')">Copy Email Promo Copy</button>
+        </div>
+        <div class="marketing-card">
+          <h4>Pinterest Promo Copy</h4>
+          <div id="dad_marketing_pinterest" class="output marketing-output"></div>
+          <button class="btn" onclick="copyMarketingBlock('dad','pinterest')">Copy Pinterest Promo Copy</button>
+        </div>
+        <div class="marketing-card">
+          <h4>TikTok Promo Copy</h4>
+          <div id="dad_marketing_tiktok" class="output marketing-output"></div>
+          <button class="btn" onclick="copyMarketingBlock('dad','tiktok')">Copy TikTok Promo Copy</button>
+        </div>
+        <div class="marketing-card">
+          <h4>Facebook Promo Copy</h4>
+          <div id="dad_marketing_facebook" class="output marketing-output"></div>
+          <button class="btn" onclick="copyMarketingBlock('dad','facebook')">Copy Facebook Promo Copy</button>
+        </div>
+        <div class="marketing-card">
+          <h4>Instagram Promo Copy</h4>
+          <div id="dad_marketing_instagram" class="output marketing-output"></div>
+          <button class="btn" onclick="copyMarketingBlock('dad','instagram')">Copy Instagram Promo Copy</button>
+        </div>
+        <div class="marketing-card">
+          <h4>YouTube Promo Copy</h4>
+          <div id="dad_marketing_youtube" class="output marketing-output"></div>
+          <button class="btn" onclick="copyMarketingBlock('dad','youtube')">Copy YouTube Promo Copy</button>
+        </div>
+        <div class="marketing-card">
+          <h4>Ad Copy</h4>
+          <div id="dad_marketing_ad" class="output marketing-output"></div>
+          <button class="btn" onclick="copyMarketingBlock('dad','ad')">Copy Ad Copy</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="custom-gpt-suite" id="dad_custom_gpt_suite">
+      <h3>🤖 Custom GPT Instructions</h3>
+      <p class="small">Creates Custom GPT setup content based on this exact fishing generator structure, categories, prompt logic, art style, product use, and output flow.</p>
+      <div class="actions">
+        <button class="btn primary" onclick="generateCustomGPTSuite('dad')">Generate Custom GPT Instructions</button>
+        <button class="btn" onclick="clearCustomGPTSuite('dad')">Clear Custom GPT Instructions</button>
+      </div>
+      <div class="custom-gpt-grid">
+        <div class="custom-gpt-card">
+          <h4>Custom GPT Instructions</h4>
+          <div id="dad_custom_gpt_instructions" class="output custom-gpt-output"></div>
+          <button class="btn" onclick="copyCustomGPTBlock('dad','instructions')">Copy Custom GPT Instructions</button>
+        </div>
+        <div class="custom-gpt-card">
+          <h4>Starter Questions</h4>
+          <div id="dad_custom_gpt_starters" class="output custom-gpt-output"></div>
+          <button class="btn" onclick="copyCustomGPTBlock('dad','starters')">Copy Starter Questions</button>
+        </div>
+        <div class="custom-gpt-card">
+          <h4>Knowledge</h4>
+          <div id="dad_custom_gpt_knowledge" class="output custom-gpt-output"></div>
+          <button class="btn" onclick="copyCustomGPTBlock('dad','knowledge')">Copy Knowledge</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="suno-section" id="dad_suno_section">
+      <h3>🎵 Suno Music Controls</h3>
+      <p class="small">Interactive music prompt builder connected to the main generated prompt. Pick chips, move sliders, then generate a Suno-ready music direction.</p>
+
+      <div class="suno-control-box">
+        <h4>Genre Selection</h4>
+        <p class="small">Multi-select. Choose one or stack a few together.</p>
+        <div class="chip-grid" id="dad_genre_chips"></div>
+        <input class="custom-input" id="dad_genre_custom" placeholder="Custom genre blend">
+      </div>
+
+      <div class="suno-control-box">
+        <h4>Style Influence Selection</h4>
+        <p class="small">Multi-select. Style influence references only — not literal imitation.</p>
+        <div class="chip-grid" id="dad_style_chips"></div>
+        <input class="custom-input" id="dad_style_custom" placeholder="Custom style influence or vibe">
+      </div>
+
+      <div class="suno-control-box">
+        <h4>Audio Settings</h4>
+        <div class="slider-row">
+          <label>Weirdness</label>
+          <input type="range" id="dad_weirdness" min="0" max="100" value="35" oninput="updateSunoSliderValues('dad')">
+          <strong id="dad_weirdness_value">35%</strong>
+        </div>
+        <div class="slider-row">
+          <label>Style Influence</label>
+          <input type="range" id="dad_styleInfluence" min="0" max="100" value="65" oninput="updateSunoSliderValues('dad')">
+          <strong id="dad_styleInfluence_value">65%</strong>
+        </div>
+        <div class="slider-row">
+          <label>Audio Influence</label>
+          <input type="range" id="dad_audioInfluence" min="0" max="100" value="55" oninput="updateSunoSliderValues('dad')">
+          <strong id="dad_audioInfluence_value">55%</strong>
+        </div>
+        <input class="custom-input" id="dad_audio_custom" placeholder="Custom audio direction">
+      </div>
+
+      <div class="suno-control-box">
+        <h4>Vocal Type</h4>
+        <div class="chip-grid" id="dad_vocal_chips"></div>
+        <input class="custom-input" id="dad_vocal_custom" placeholder="Custom vocal direction">
+      </div>
+
+      <div class="actions">
+        <button class="btn primary" onclick="generateSunoMusic('dad')">Generate Suno Music Prompt</button>
+        <button class="btn" onclick="copySunoMusic('dad')">Copy Suno Music Prompt</button>
+      </div>
+
+      <div id="dad_suno_output" class="output suno-output"></div>
+    </div>
+  </div>
+</section>
+
+<section id="saved" class="panel">
+  <div class="hero">
+    <h2>💾 Saved Prompts</h2>
+    <button class="btn" onclick="renderSaved()">Refresh Saved Prompts</button>
+    <button class="btn" onclick="clearSaved()">Clear All Saved</button>
+    <div id="savedList"></div>
+  </div>
+</section>
+
+<section id="howto" class="panel">
+  <div class="hero">
+    <h2>How To Use</h2>
+    <ol>
+      <li>Choose Women Who Fish or Father’s Day Fishing.</li>
+      <li>Pick your fish, text, background, art style, colors, product type, and finish.</li>
+      <li>Click Generate Prompt.</li>
+      <li>Copy the prompt into ChatGPT, Gemini, Ideogram, Midjourney, Leonardo, or another AI image tool.</li>
+      <li>Use your finished image for shirts, mugs, stickers, tumblers, decals, DTF-style transfers, posters, and gift products.</li>
+      <li>Use Smart Random when you do not know what to pick. It respects locked fields, keeps gender theme-safe, and avoids obvious repeated combinations for up to 500 saved random cycles whenever possible.</li>
+      <li>Save prompts you want to use again.</li>
+    </ol>
+  </div>
+</section>
+</main>
+
+<button class="side-scroll" id="scrollTopBtn" onclick="scrollToTop()" title="Scroll to top">⬆</button>
+<button class="side-scroll" id="scrollBottomBtn" onclick="scrollToBottom()" title="Scroll to bottom">⬇</button>
+<footer>2026 all rights reserved by glamorousgrammyglowup</footer>
+
+<script>
+const DATA = {"women": {"Generator Mode": ["None", "Baddie Bass Fishing", "Bass And Bougie", "Bass Babe Energy", "Big Bass Baddie", "Boat Babe Fishing", "Bold Lake Girl", "Camo Cutie Fishing", "Catch Queen", "Cute But Casts Hard", "Cute Fishing Humor", "Dockside Diva", "Fishing Bestie Vibes", "Fishing Queen", "Freshwater Glam", "Girls Day Fishing", "Girly Fishing Humor", "Glam Camping Fishing", "Glam Lake Life", "Glitter Fishing Vibes", "Hooked On Glitter", "Hooked On Lake Days", "Lake Day Diva", "Lake Life Looks Good", "Lipstick And Lures", "Luxury Fishing Girl", "Neon Fishing Girl", "Outdoor Girl Era", "Pink Camo Fishing", "Pink Rod Power", "Pretty Cast Club", "Pretty Girls Fish Too", "Reel Cute Reel Tough", "Reel Girls Fish", "River Glam Girl", "Sassy Bass Babe", "Southern Fishing Girl", "Sparkle And Cast", "Tackle Box Baddie", "Weekend Fishing Girl"], "Gender": ["None", "Male", "Female"], "Ethnicity": ["None", "African", "African American", "Afro-Caribbean", "Asian", "Black", "Caribbean", "Central American", "Custom Ethnicity", "East Asian", "Filipino", "Hispanic", "Indigenous", "Latina", "Latino", "Mediterranean", "Middle Eastern", "Mixed Ethnicity", "Native American", "North African", "Pacific Islander", "South Asian", "Southeast Asian", "White"], "Skin Tone": ["None", "Alabaster", "Almond", "Amber", "Beige", "Bronze", "Caramel", "Chestnut", "Cocoa", "Coffee Brown", "Cool Beige", "Dark Brown", "Deep Brown", "Deep Chocolate", "Ebony", "Fair", "Golden Brown", "Honey", "Ivory", "Light Brown", "Mahogany", "Medium Brown", "Mocha", "Olive", "Porcelain", "Rich Brown", "Rose Beige", "Sable", "Sand", "Tan", "Toffee", "Umber", "Warm Brown"], "Age": ["None", "30s", "40s", "50s", "60s", "70s", "Adult", "Ageless Adult", "Baby Boomer", "Classic Dad Age", "College Age", "Elder", "Grandma Age", "Grandpa Age", "Mature Adult", "Middle Aged", "Modern Adult", "Older Adult", "Retired Age", "Senior", "Teen", "Wise Elder", "Young Adult"], "Main Object / Fish": ["None", "Aggressive Bass", "Aggressive Open-Mouth Bass", "Bass In Water Splash", "Bass On Hook", "Bass With Glitter Scales", "Bass With Hat", "Bass With Sunglasses", "Bluegill", "Brook Trout", "Cartoon Fish Mascot", "Catfish", "Colorful Fantasy Fish", "Crappie", "Cute Catfish", "Cute Kawaii Fish", "Fantasy Lake Fish", "Glitter Catfish", "Glitter Fantasy Fish", "Golden Bass", "Jumping Bass", "Koi-Inspired Bass", "Largemouth Bass", "Leaping Trout", "Marlin", "Neon Rainbow Bass", "Perch", "Pink Bass", "Rainbow Neon Bass", "Realistic Bass", "Redfish", "Salmon", "Smallmouth Bass", "Sparkle Trout", "Spotted Bass", "Striped Bass", "Sunfish", "Trout", "Walleye", "White Bass"], "Fish Expression / Pose": ["None", "Action Strike Pose", "Angled Hero Jump", "Bait Chase Pose", "Big Splash Leap", "Centered Badge Pose", "Circle Badge Leap", "Coming Out Of Water", "Curved Tail Motion", "Cute Happy Face", "Dramatic Side Profile", "Fierce Mascot Pose", "Fish Breaking Frame", "Floating Mascot Pose", "Forward Splash Pose", "Glitter Splash Pose", "Hooked Action Pose", "Jumping From Water", "Lake Jump Pose", "Leaping Over Text", "Left Facing Pose", "Mouth Open Roar", "Open-Mouth Strike", "Over-The-Shoulder Fish Pose", "Profile Logo Pose", "Right Facing Pose", "Sassy Sunglasses Pose", "Side Profile Bass", "Splashing Forward", "Sticker Cutout Pose", "Swimming Forward", "Tail Splash Curve", "Three-Quarter Hero Pose", "Top Water Strike", "Typography Wrap Pose", "Vertical Jump Pose", "Water Burst Pose", "Wave Jump Pose", "Wide Mouth Pose", "Winking Fish Face"], "Accessories": ["None", "Bandana", "Baseball Cap", "Blue Sunglasses", "Bow Accent", "Camo Hat", "Charm Bracelet", "Cute Bait Bucket", "Cute Fishing Earrings", "Fishing Earrings", "Fishing Gloves", "Floral Cap", "Glitter Bow", "Glitter Lure", "Glitter Sunglasses", "Gold Hoop Earrings", "Heart Sunglasses", "Lake Girl Hat", "Lipstick Mark Accent", "Lure Earrings", "Pink Camo Trucker Hat", "Pink Cooler", "Pink Fishing Rod", "Pink Reel", "Pink Sunglasses", "Ponytail Bow", "Reflective Sunglasses", "Retro Cat-Eye Sunglasses", "Rhinestone Hat", "Sequin Cap", "Sparkle Hair Bow", "Sparkle Tackle Box", "Star Sunglasses", "Sun Hat", "Tackle Box", "Teardrop Earrings", "Trucker Hat", "Turquoise Sunglasses", "Visor Hat", "Waterproof Boots"], "Objects / Props": ["None", "Bait", "Bait Bucket", "Boat", "Boat Paddle", "Bubbles", "Butterflies", "Camp Chair", "Camp Mug", "Campfire", "Casting Net", "Cooler", "Dock", "Fish Hook Heart", "Fishing Hook", "Fishing Line", "Fishing Reel", "Fishing Rod", "Floating Stars", "Glitter Lure", "Hook", "Lake Sign", "Lake Waves", "Lantern", "Lily Pads", "Lure", "Minnow Bucket", "Moon Reflection", "Mountain Lake", "Pine Trees", "Reel Handle", "River Rocks", "Sparkles", "Splash Crown Shape", "Stars", "Sun Rays", "Tackle Bag", "Tackle Box", "Tackle Tray", "Water Splash"], "Typography Style": ["None", "3D Puffy Letters", "Airbrush Letters", "Arcade Neon Letters", "Bold Block Font", "Bold Serif Letters", "Bubble Gum Letters", "Bubble Script", "Chrome Pink Letters", "Chunky Retro Letters", "Clean Boutique Font", "Curved Badge Letters", "Distressed Outdoor Font", "Girly Boutique Font", "Glitter Bubble Letters", "Graffiti Pop Letters", "Handwritten Script", "High Contrast Block Font", "Jersey Style Letters", "Lake Sign Typography", "Metallic Chrome Letters", "Neon Glow Typography", "Outlined Shadow Letters", "Playful Script", "Retro 70s Letters", "Retro Script Lettering", "Rounded Cartoon Letters", "Shadowed Varsity Font", "Sparkle Serif Font", "Sporty Varsity Font", "Stacked Poster Font", "Stencil Outdoor Font", "Sticker Decal Lettering", "Thick Mascot Font", "Thick White Outline Text", "Vintage Bait Shop Text", "Vintage Camp Font", "Water Splash Letters", "Wavy Retro Text", "Western Fishing Font"], "Text Placement": ["None", "Angled Across Bottom", "Arched Above Fish", "Arched Top And Bottom", "Badge Circle Layout", "Bottom Ribbon Only", "Centered Stacked Text", "Circle Seal Text", "Curved Around Fish", "Curved Badge Text", "Diagonal Text Layout", "Fish Breaking Through Text", "Frame Border Text", "Headline Behind Hat", "Headline Over Fish", "Large Middle Word", "Large Text On Bottom", "Large Text On Top", "Layered Poster Text", "Left Side Text Stack", "Minimal Side Text", "Ribbon Banner Text", "Right Side Text Stack", "Rounded Decal Layout", "Small Subtext Banner", "Stacked Center Layout", "Sticker Label Text", "Sunset Arc Text", "Text Around Circle", "Text Behind Fish", "Text Beside Fish", "Text Inside Badge", "Text On Splash", "Text Over Sunset", "Text Split By Fish", "Text Top And Bottom", "Top Heavy Typography", "Typography Wrapped Around Tail", "Vertical Side Text", "Wave Shaped Text"], "Background / Environment": ["None", "Aqua Splash Background", "Black Background", "Black Shirt Mockup Style", "Blue Lake Background", "Boho Lake Sunset", "Campground", "Cream Vintage Background", "Firefly Lake Night", "Fishing Cabin", "Forest Campground", "Forest Silhouette", "Glitter Background", "Golden Hour Lake", "Hot Pink Background", "Lake Dock", "Lake Reflection", "Lake Stars Night", "Mountain Lake", "Neon Gradient Background", "No Background / Transparent Style", "Outdoor Camping Scene", "Pine Forest Lake", "Pink Camo Background", "Pink Glitter Background", "Retro Circle Sunset", "Retro Sunset", "River Background", "Rustic Lake Sign", "Sparkle Burst Background", "Sunrise Lake", "Teal Splash Background", "Transparent PNG Style", "Tropical River", "Vaporwave Sunset", "Vintage Cream Poster", "Water Splash Explosion", "Watercolor Lake", "White Background", "Wood Dock Scene"], "Mood / Vibe": ["None", "Adventurous", "Bold", "Bossy", "Bougie", "Bright", "Chill", "Classy", "Confident", "Cute", "Cute But Tough", "Edgy", "Fearless", "Fun", "Funny", "Giftable", "Girly", "Glam", "Happy", "High Energy", "Lake-Life", "Loud And Proud", "Outdoorsy", "Playful", "Pretty Tough", "Retro", "Sassy", "Southern Charm", "Sparkly", "Sporty", "Statement Tee", "Summer Fun", "Swaggy", "Sweet", "Trendy", "Vintage", "Weekend Vibes", "Whimsical", "Wild", "Women Empowered"], "Art Style": ["None", "3D Glossy Cartoon", "Airbrushed Neon Illustration", "Bold Sticker Art", "Boutique T-Shirt Art", "Cartoon Realism", "Chrome Glitter Graphic", "Clean Vector Logo", "Comic Book Fishing Art", "Cute Kawaii Fishing Art", "Distressed Shirt Graphic", "DTF Transfer Style", "Girly Sticker Sheet Style", "Glitter Glam Illustration", "Glossy Vector Mascot", "Hand-Drawn Decal Style", "High Contrast Vector", "Lake Life Poster Art", "Mascot Badge Design", "Modern Sublimation Art", "Neon Airbrush Art", "Pop Art Fishing Graphic", "Premium POD Graphic", "Retro 80s Fishing Art", "Retro Fishing Shirt Graphic", "Retro Outdoor Patch", "Screen Print Style", "Soft Glitter Illustration", "Sparkle SVG Style", "Sports Team Mascot", "Sticker-Style Graphic", "Sublimation T-Shirt Design", "Tattoo Flash Fishing Art", "Thick Outline Cartoon", "Vintage Bait Shop Sign", "Vintage Camp Shirt Art", "Vintage Decal Design", "Vintage Mascot Logo", "Water Splash Vector", "Y2K Glam Fishing Art"], "Color Palette": ["None", "Aqua + Magenta", "Aqua + White + Gold", "Black + Neon Green", "Black + Pink", "Black + White + Pink", "Blue + Pink + Yellow", "Blue + Silver", "Bubblegum Pink + Aqua", "Coral + Navy", "Cream + Pink + Teal", "Emerald + Gold", "Glitter Pink + Chrome", "Gold + Hot Pink", "Green + Hot Pink", "Hot Pink + Black", "Hot Pink + Teal", "Lake Blue + Pink", "Lavender + Aqua", "Mint + Pink", "Navy + Pink", "Neon Rainbow", "Orange + Pink", "Pastel Rainbow", "Pink + Green + White", "Pink + Lime", "Pink + Purple", "Pink Camo", "Pink Glitter + White", "Purple + Teal", "Rainbow + Black", "Red + Pink + White", "Rose Gold + Pink", "Royal Blue + Gold + Black", "Silver + Pink", "Sunset Orange + Lake Blue", "Sunset Pink + Orange", "Teal + Coral", "Teal + White", "Turquoise + Yellow"], "Special Effects": ["None", "3D Shadow", "Airbrush Highlights", "Bubble Effects", "Chrome Outline", "Chrome Shine", "Color Splash", "Distressed Ink", "Floating Stars", "Foam Splash", "Foil Shine", "Glitter Drips", "Glitter Sparkles", "Glossy Shine", "Glow Outline", "Gradient Shine", "Halftone Texture", "Holographic Accents", "Lens Flare", "Light Burst", "Metallic Edge", "Motion Lines", "Neon Glow", "Paint Splatter", "Pearl Shine", "Rainbow Glow", "Retro Grain", "Rhinestone Sparkle", "Shimmer Dust", "Soft Glow", "Sparkle Burst", "Splash Droplets", "Sticker Border", "Sun Ray Glow", "Thick Shadow", "Water Rings", "Water Splashes", "Wet Shine", "White Highlight Streaks", "Wind Swirls"], "Product Type": ["None", "Apron Design", "Car Decal", "Cup Wrap", "Decal", "Digital Clipart", "DTF Transfer", "Fishing Club Logo", "Gift Tag", "Hat Patch", "Hoodie Graphic", "Keychain Design", "Kids Shirt Graphic", "Lake House Sign", "Magnet Design", "Mousepad Design", "Mug Design", "Notebook Cover", "Phone Case Design", "Pillow Design", "PNG Design", "Poster", "Print And Cut Sticker", "Printable Wall Decor", "Shirt Pocket Graphic", "Sticker Pack", "Sublimation Transfer", "SVG Decal", "Sweatshirt Graphic", "T-Shirt Graphic", "Tank Top Design", "Temporary Tattoo Design", "Throw Blanket Design", "Tote Bag Design", "Tumbler Wrap", "Vinyl Decal", "Wall Art", "Water Bottle Sticker", "Window Decal", "Wood Sign Design"], "Finish / Quality": ["None", "8K Ultra Crisp", "Airbrushed Finish", "Bold Outline Finish", "Bold Sticker Border", "Chrome Polished Finish", "Clean PNG Finish", "Clean Vector Edges", "Commercial POD Quality", "Cricut-Friendly Finish", "Crisp Printable Finish", "Distressed Vintage Texture", "DTF Ready Finish", "Embroidery Patch Look", "Glossy Finish", "Glossy Poster Finish", "HD Digital Art", "High Contrast", "High Resolution Print", "Luxury Polished Finish", "Matte Print Finish", "Merch Ready Finish", "No Mockup Flat Design", "Premium Decal Finish", "Print-Ready", "Screen Print Ready", "Sharp Typography Finish", "Smooth Gradient Finish", "Sticker Sheet Finish", "Strong Contrast Finish", "Sublimation Ready", "Thick Ink Finish", "Transparent Background Style", "Transparent PNG Ready", "Ultra Detailed Vector", "Vector SVG Look", "Vinyl Cutter Friendly", "Waterproof Sticker Look", "Web Listing Ready", "White Background Printable"]}, "dad": {"Generator Mode": ["None", "Bass Dad Mode", "Best Catch Dad", "Best Dad Fishing", "Boat Dad", "Campfire Dad Fishing", "Dad Fishing Humor", "Dad Gone Fishing", "Dad Life Fishing", "Dad Reel Legend", "Dad Tackle Box", "Dockside Dad", "Emotional Dad Tribute", "Family Fishing Day", "Father And Daughter Fishing", "Father And Son Fishing", "Father’s Day Fishing", "Father’s Day Gift Mode", "Fishing Dad Club", "Fishing Grandpa", "Fishing Is Therapy Dad", "Funny Fishing Dad", "Grandpa Fishing", "Grandpa Reel Legacy", "Hooked On Dad", "Lake Dad", "Old School Fishing Dad", "One More Cast Dad", "Papa Fishing", "Papa’s Fishing Crew", "Proud Fishing Dad", "Reel Cool Dad", "Retired Fishing Dad", "Rustic Dad Gift", "Rustic Lake Dad", "Sportsman Dad", "Trophy Dad Fishing", "Vintage Bait Shop Dad", "Vintage Outdoors Dad", "Weekend Dad Fishing"], "Gender": ["None", "Male", "Female"], "Ethnicity": ["None", "African", "African American", "Afro-Caribbean", "Asian", "Black", "Caribbean", "Central American", "Custom Ethnicity", "East Asian", "Filipino", "Hispanic", "Indigenous", "Latina", "Latino", "Mediterranean", "Middle Eastern", "Mixed Ethnicity", "Native American", "North African", "Pacific Islander", "South Asian", "Southeast Asian", "White"], "Skin Tone": ["None", "Alabaster", "Almond", "Amber", "Beige", "Bronze", "Caramel", "Chestnut", "Cocoa", "Coffee Brown", "Cool Beige", "Dark Brown", "Deep Brown", "Deep Chocolate", "Ebony", "Fair", "Golden Brown", "Honey", "Ivory", "Light Brown", "Mahogany", "Medium Brown", "Mocha", "Olive", "Porcelain", "Rich Brown", "Rose Beige", "Sable", "Sand", "Tan", "Toffee", "Umber", "Warm Brown"], "Age": ["None", "30s", "40s", "50s", "60s", "70s", "Adult", "Ageless Adult", "Baby Boomer", "Classic Dad Age", "College Age", "Elder", "Grandma Age", "Grandpa Age", "Mature Adult", "Middle Aged", "Modern Adult", "Older Adult", "Retired Age", "Senior", "Teen", "Wise Elder", "Young Adult"], "Main Object / Fish": ["None", "Aggressive Bass", "Bass Breaking Water", "Bass With Hook", "Bass With Lure", "Big Mouth Bass", "Bluegill", "Brook Trout", "Cartoon Fish Mascot", "Catfish", "Classic Trophy Bass", "Crappie", "Father’s Day Bass", "Fish Badge Mascot", "Freshwater Bass", "Golden Bass", "Jumping Fish", "Lake Trophy Fish", "Largemouth Bass", "Leaping Trout", "Marlin", "Mounted Fish Style", "Open Mouth Bass", "Perch", "Realistic Bass", "Redfish", "River Trout", "Rustic Bass", "Salmon", "Smallmouth Bass", "Sport Fish Mascot", "Striped Bass", "Tackle Shop Bass", "Trout", "Vintage Bass Illustration", "Walleye", "White Bass", "Wild Catfish", "Woodcut Bass", "Worn Vintage Fish"], "Dad Character / Accessories": ["None", "Baseball Cap", "Beard Dad Character", "Beer Belly Cartoon Dad", "Boat Captain Hat", "Camp Chair", "Cooler", "Dad Beard", "Dad Glasses", "Dad Hat", "Dock Shoes", "Father And Child Silhouette", "Fish Hook Cap", "Fishing Apron", "Fishing Boots", "Fishing Gloves", "Fishing Hoodie", "Fishing Vest", "Fishing Waders", "Flannel Shirt", "Grandpa Hat", "Grill Master Apron", "Lake Dad Cap", "Life Jacket", "Plaid Shirt", "Pocket Knife", "Rain Jacket", "Retro Sunglasses", "Rustic Hat", "Sunglasses", "Tackle Bag", "Tackle Belt", "Thermos", "Tool Belt", "Trucker Hat", "Vintage Cap", "Walking Stick", "Work Boots", "Worn Boots", "Wrist Watch"], "Objects / Props": ["None", "Bait Bucket", "Bait Shop Sign", "Boat", "Boat Paddle", "Camp Mug", "Campfire", "Canoe", "Coffee Cup", "Cooler", "Dock", "Father And Child Silhouette", "Fish Net", "Fishing Chair", "Fishing Dock", "Fishing Hook", "Fishing Line", "Fishing Reel", "Fishing Rod", "Gift Bow", "Grill", "Hook", "Lake", "Lake Cabin", "Lake Waves", "Lantern", "Lodge Sign", "Lure", "Minnow Bucket", "Mountain Lake", "Old Truck", "Pine Trees", "Pocket Knife", "Reel", "River Rocks", "Sunset", "Tackle Box", "Tackle Tray", "Thermos", "Thermos Bottle"], "Typography Style": ["None", "3D Vintage Letters", "Angled Poster Font", "Arch Text Font", "Badge Logo Lettering", "Block Serif Font", "Bold Block Font", "Bold Condensed Font", "Campground Sign Font", "Classic Dad Font", "Clean Masculine Font", "Cream Distressed Font", "Distressed Outdoor Font", "Heavy Slab Serif", "Lake Lodge Font", "Masculine Script", "Navy Badge Font", "Old School Sports Font", "Old Tackle Shop Font", "Outdoor Patch Font", "Retro Bait Shop Font", "Retro Serif Font", "Rounded Badge Font", "Rustic Script", "Rustic Wood Sign Lettering", "Screen Print Font", "Shadow Block Font", "Stamped Texture Font", "Stencil Outdoor Font", "Strong Poster Font", "Thick Cream Letters", "Varsity Dad Font", "Vintage Banner Font", "Vintage Fishing Font", "Vintage Sportsman Typography", "Vintage Workwear Font", "Weathered Bold Font", "Western Outdoor Font", "Western Slab Font", "Woodcut Lettering"], "Text Placement": ["None", "Angled Banner Text", "Arched Above Fish", "Arched Top Text", "Badge Circle Layout", "Bottom Badge Text", "Bottom Heavy Typography", "Centered Badge Seal", "Centered Stacked Text", "Clean Center Text", "Curved Around Fish", "Diagonal Text Layout", "Fish Breaking Text", "Fish Framed Text", "Fishing Line Text Wrap", "Headline Over Sunset", "Headline With Subtext", "Large Dad Word Center", "Large Middle Word", "Large Text On Bottom", "Large Text On Top", "Layered Vintage Poster", "Left Text Stack", "Minimal Badge Text", "Patch Logo Layout", "Ribbon Banner Text", "Right Text Stack", "Rounded Decal Layout", "Stacked Shirt Layout", "Sunset Arc Text", "Text Around Fish", "Text Behind Fish", "Text On Wood Sign", "Text Split By Fish", "Text Top And Bottom", "Top And Ribbon Bottom", "Two Line Slogan", "Vertical Side Text", "Vintage Label Layout", "Wide Badge Text"], "Background / Environment": ["None", "American Lake Scene", "Bait Shop Wall", "Black Shirt Background", "Blue Lake Scene", "Boat On Water", "Cabin By Lake", "Campfire Night", "Campground", "Cream Vintage Background", "Dark Forest Lake", "Dock At Sunrise", "Fishing Dock", "Fishing Lodge", "Forest Lake", "Forest Silhouette", "Golden Hour Lake", "Lake Cabin Scene", "Lake Reflection", "Lake Sunset", "Mountain Lake", "Navy Shirt Background", "No Background / Transparent Style", "Old Boat Dock", "Orange Sunset Circle", "Pine Forest Lake", "Retro Badge Background", "Riverbank Scene", "Rustic Sign Background", "Rustic Wood Texture", "Sunset Circle", "Sunset Lake", "Transparent PNG Style", "Vintage Badge Background", "Vintage Cream Poster", "Weathered Poster Background", "White Background", "Wood Dock Scene", "Wood Grain Background", "Worn Black Background"], "Mood / Vibe": ["None", "Adventure", "Backwoods", "Campfire", "Classic", "Cool Dad", "Cozy", "Dad Joke", "Family", "Father’s Day", "Fishing Lodge", "Funny", "Gift-Ready", "Grandpa Love", "Grateful", "Heartwarming", "Heritage", "Humorous", "Lake Life", "Legacy", "Masculine", "Nostalgic", "Old School", "Outdoorsy", "Peaceful", "Proud Dad", "Proud Grandpa", "Reel Humor", "Relaxed", "Retired Life", "Rustic", "Sentimental", "Simple", "Sportsman", "Strong", "Traditional", "Trophy Catch", "Vintage", "Warm", "Weekend Vibes"], "Art Style": ["None", "Bait Shop Sign Style", "Bold Vector Mascot", "Cartoon Realism", "Classic Dad Shirt Graphic", "Clean Vector Logo", "Comic Fishing Art", "Commercial POD Graphic", "Distressed Poster Art", "Distressed T-Shirt Design", "DTF Transfer Style", "Engraved Fish Style", "Fishing Lodge Logo", "Glossy Vector Mascot", "Hand-Drawn Outdoor Art", "Heritage Outdoors Art", "High Contrast Vector", "Lake Life Badge Design", "Mascot Badge Design", "Old Bait Shop Poster", "Premium Shirt Graphic", "Retro 70s Outdoor Art", "Retro Fishing Shirt Graphic", "Retro Outdoor Patch", "Rustic Badge Logo", "Rustic Decal Art", "Screen Print Shirt Art", "Sportsman Mascot Design", "Sticker-Style Graphic", "Sublimation Design", "Tattoo Flash Fishing Art", "Thick Outline Cartoon", "Vintage Americana Outdoor Poster", "Vintage Camp Shirt Art", "Vintage Decal Design", "Vintage Fishing Patch", "Vintage Lake Sign", "Vintage Sports Poster", "Weathered Workwear Graphic", "Western Fishing Graphic"], "Color Palette": ["None", "Black + Cream", "Black + Gold", "Blue + Orange + Cream", "Brown + Cream", "Burnt Orange + Navy", "Charcoal + Cream", "Cream + Forest Green", "Dark Green + Gold", "Denim Blue + Tan", "Earth Tone Mix", "Forest Green + Gold", "Forest Green + Tan", "Gray + Orange", "Lake Blue + Cream", "Lake Blue + Sunset Yellow", "Maroon + Cream", "Navy + Cream + Orange", "Navy + Gold", "Olive + Tan", "Olive Green + Black", "Orange + Black", "Orange + Teal", "Red + Cream", "Red + Navy + White", "River Blue + Brown", "Royal Blue + Gold + Black", "Rust + Cream", "Rustic Brown + Gold", "Sage + Tan", "Sunset Orange + Brown", "Tan + Black", "Teal + Cream", "Vintage Cream + Orange", "Vintage Red + Navy", "Warm Brown + Tan", "Weathered Black + Orange", "White + Navy", "Wood Brown + Gold", "Yellow + Brown"], "Special Effects": ["None", "Aged Texture", "Airbrush Highlights", "Badge Shadow", "Bait Shop Aging", "Bold Drop Shadow", "Cracked Ink", "Distressed Ink", "Dusty Poster Texture", "Fish Scale Shine", "Fishing Line Swirl", "Foam Splash", "Grain Overlay", "Halftone Texture", "Hook Line Accent", "Ink Texture", "Lake Reflection Shine", "Lens Flare", "Light Burst", "Matte Ink Texture", "Motion Lines", "Old Paper Texture", "Retro Grain", "Rough Ink Edge", "Screen Print Texture", "Shadowed Badge", "Splash Droplets", "Stamped Texture", "Sun Glow", "Sun Rays", "Thick Ink Outline", "Vintage Distress", "Vintage Fade", "Water Rings", "Water Splash", "Weathered Texture", "White Highlight Streaks", "Wood Grain", "Woodcut Texture", "Worn Edges"], "Product Type": ["None", "Apron Design", "Blanket Design", "Bottle Sticker", "Canvas Print", "Car Decal", "Coffee Mug Design", "Cup Wrap", "Decal", "DTF Transfer", "Father’s Day T-Shirt", "Fishing Club Shirt", "Fishing Team Logo", "Gift Poster", "Gift Tag", "Grandpa Mug", "Grill Apron", "Hat Patch", "Hoodie Graphic", "Keychain Design", "Lake House Sign", "Magnet Design", "Mousepad Design", "Mug Design", "Phone Case Design", "Pillow Design", "PNG Design", "Pocket Shirt Graphic", "Poster", "Print And Cut Sticker", "Sticker", "Sublimation Transfer", "SVG Decal", "Sweatshirt Graphic", "Tackle Box Sticker", "Tank Top Design", "Tote Bag Design", "Tumbler Wrap", "Vinyl Decal", "Wall Art"], "Finish / Quality": ["None", "8K Ultra Crisp", "Airbrushed Finish", "Bold Outline Finish", "Clean PNG Finish", "Clean Vector Edges", "Commercial POD Quality", "Cricut-Friendly Finish", "Crisp Printable Finish", "Distressed Vintage Texture", "DTF Ready Finish", "Embroidery Patch Look", "HD Digital Art", "High Contrast", "High Resolution Print", "Matte Outdoor Print", "Matte Shirt Finish", "Merch Ready Finish", "No Mockup Flat Design", "Premium Decal Finish", "Print-Ready", "Rough Ink Finish", "Screen Print Ready", "Sharp Typography Finish", "Sticker Sheet Finish", "Strong Contrast Finish", "Sublimation Ready", "Thick Ink Finish", "Transparent Background Style", "Transparent PNG Ready", "Ultra Detailed Vector", "Vector SVG Look", "Vintage Distressed Finish", "Vinyl Cutter Friendly", "Weathered Poster Finish", "Web Listing Ready", "White Background Printable", "White Stroke Finish", "Wood Sign Finish", "Worn T-Shirt Finish"]}, "presets": {"women": ["None", "Bass And Bougie", "Bass Babe Energy", "Big Bass Baddie", "Born To Fish In Pink", "Camo But Make It Cute", "Catch Me At The Lake", "Cute But I Cast Hard", "Fish Fear Me Girls Cheer Me", "Fish Like A Girl", "Fishing Queen", "Girls Just Wanna Have Fish", "Glitter Hooks Club", "Hooked On Glitter", "Hooked On Lake Days", "Keeping It Reel", "Lake Life Looks Good On Me", "Lipstick Lures & Lake Days", "Pink Rod Power", "Pretty Girls Fish Too", "Reel Cute Reel Tough", "Reel Girls Fish", "Sassy Cast Queen", "She Fishes Like A Boss", "Sparkle Bait & Bass", "Weekend Hooker"], "dad": ["None", "Best Catch Ever", "Best Dad By A Reel Long Shot", "Born To Fish Forced To Work", "Dad Casts Best", "Dad Needs One More Cast", "Dad’s Favorite Catch", "Dad’s Gone Fishing", "Fatherhood Hooked Me", "Fishing Is Cheaper Than Therapy", "Fishing With Dad", "Grandpa’s Fishing Crew", "Grandpa’s Reel Legacy", "Happy Father’s Day", "Hook Line And Father Time", "Hooked On Dad", "King Of The Dock", "My Dad Is Off The Hook", "One More Cast Dad", "Papa Knows Best", "Papa’s Tackle Team", "Reel Cool Dad", "Reel Men Raise Good Kids", "The Bass Father", "The Reel Legend", "World’s Best Fishing Dad"]}};
+const RANDOM_HISTORY_LIMIT = 500;
+const randomHistory = {
+  women: JSON.parse(localStorage.getItem('womenRandomHistory') || '[]'),
+  dad: JSON.parse(localStorage.getItem('dadRandomHistory') || '[]')
+};
+
+
+const SMART_FAMILIES = {
+  women: [
+    {
+      name:'Glam Pink Fishing Queen',
+      Gender:'Female',
+      Ethnicity:['African American','Black','Latina','Mixed Ethnicity','White'],
+      'Skin Tone':['Caramel','Deep Brown','Golden Brown','Honey','Medium Brown','Mocha','Rich Brown','Tan','Toffee','Warm Brown'],
+      Age:['Adult','Young Adult','30s','40s','50s'],
+      'Generator Mode':['Fishing Queen','Glam Lake Life','Glitter Fishing Vibes','Pink Camo Fishing','Pretty Girls Fish Too','Reel Girls Fish','Women Who Fish'],
+      'Main Object / Fish':['Bass With Glitter Scales','Cute Kawaii Fish','Glitter Fantasy Fish','Jumping Bass','Largemouth Bass','Neon Rainbow Bass','Pink Bass','Rainbow Neon Bass'],
+      'Fish Expression / Pose':['Centered Badge Pose','Cute Happy Face','Jumping From Water','Leaping Over Text','Sassy Sunglasses Pose','Splashing Forward','Water Burst Pose'],
+      Accessories:['Glitter Bow','Glitter Lure','Pink Camo Trucker Hat','Pink Fishing Rod','Pink Sunglasses','Reflective Sunglasses','Rhinestone Hat','Sparkle Hair Bow'],
+      'Objects / Props':['Butterflies','Fishing Reel','Fishing Rod','Glitter Lure','Lake Waves','Sparkles','Stars','Water Splash'],
+      'Typography Style':['Bubble Script','Chrome Pink Letters','Glitter Bubble Letters','Neon Glow Typography','Retro Script Lettering','Sticker Decal Lettering','Y2K Glitter Font'],
+      'Text Placement':['Arched Above Fish','Centered Stacked Text','Curved Badge Text','Ribbon Banner Text','Text Around Circle','Text Top And Bottom'],
+      'Background / Environment':['Glitter Background','Lake Reflection','Pink Glitter Background','Retro Sunset','Sparkle Burst Background','Vaporwave Sunset','Water Splash Explosion'],
+      'Mood / Vibe':['Bold','Bougie','Confident','Cute','Girly','Glam','Sassy','Sparkly'],
+      'Art Style':['Glitter Glam Illustration','Glossy Vector Mascot','Neon Airbrush Art','Sticker-Style Graphic','Sublimation T-Shirt Design','Y2K Glam Fishing Art'],
+      'Color Palette':['Aqua + Magenta','Black + Pink','Glitter Pink + Chrome','Gold + Hot Pink','Hot Pink + Teal','Pink + Green + White','Pink Camo','Royal Blue + Gold + Black'],
+      'Special Effects':['Chrome Shine','Floating Stars','Glitter Sparkles','Glossy Shine','Holographic Accents','Neon Glow','Rhinestone Sparkle','Water Splashes'],
+      'Product Type':['DTF Transfer','Mug Design','PNG Design','Sticker Pack','T-Shirt Graphic','Tumbler Wrap'],
+      'Finish / Quality':['8K Ultra Crisp','Clean Vector Edges','Commercial POD Quality','Glossy Finish','Print-Ready','Sublimation Ready','Transparent Background Style']
+    },
+    {
+      name:'Funny Lake Girl',
+      Gender:'Female',
+      Ethnicity:['African American','Black','Hispanic','Latina','Mixed Ethnicity','White'],
+      'Skin Tone':['Almond','Caramel','Cocoa','Fair','Golden Brown','Light Brown','Medium Brown','Olive','Tan'],
+      Age:['Adult','Young Adult','30s','40s'],
+      'Generator Mode':['Cute Fishing Humor','Girls Day Fishing','Girly Fishing Humor','Weekend Fishing Girl','Women Who Fish'],
+      'Main Object / Fish':['Aggressive Open-Mouth Bass','Cartoon Fish Mascot','Catfish','Cute Kawaii Fish','Jumping Bass','Largemouth Bass','Smallmouth Bass'],
+      'Fish Expression / Pose':['Big Splash Leap','Cute Happy Face','Fierce Mascot Pose','Open-Mouth Strike','Sassy Sunglasses Pose','Winking Fish Face'],
+      Accessories:['Baseball Cap','Camo Hat','Pink Sunglasses','Reflective Sunglasses','Trucker Hat','Visor Hat'],
+      'Objects / Props':['Bait','Boat','Dock','Fishing Hook','Fishing Rod','Hook','Lake Waves','Tackle Box','Water Splash'],
+      'Typography Style':['Bold Block Font','Chunky Retro Letters','Distressed Outdoor Font','Sporty Varsity Font','Thick Mascot Font'],
+      'Text Placement':['Large Text On Bottom','Large Text On Top','Text Behind Fish','Text Split By Fish','Text Top And Bottom'],
+      'Background / Environment':['Black Background','Lake Dock','Lake Reflection','Outdoor Camping Scene','Retro Circle Sunset','Retro Sunset','White Background'],
+      'Mood / Vibe':['Bold','Cute','Funny','Lake-Life','Outdoorsy','Playful','Sassy','Weekend Vibes'],
+      'Art Style':['Bold Sticker Art','Cartoon Realism','Retro Fishing Shirt Graphic','Sticker-Style Graphic','Thick Outline Cartoon'],
+      'Color Palette':['Black + Pink','Blue + Pink + Yellow','Hot Pink + Teal','Lake Blue + Pink','Neon Rainbow','Sunset Orange + Lake Blue'],
+      'Special Effects':['Airbrush Highlights','Color Splash','Motion Lines','Splash Droplets','Sticker Border','Water Splashes'],
+      'Product Type':['Decal','Hoodie Graphic','PNG Design','Sticker Pack','T-Shirt Graphic','Tumbler Wrap'],
+      'Finish / Quality':['Bold Sticker Border','Clean Vector Edges','Commercial POD Quality','High Contrast','Print-Ready','Screen Print Ready']
+    },
+    {
+      name:'Rustic Women Outdoors',
+      Gender:'Female',
+      Ethnicity:['African American','Black','Hispanic','Indigenous','Latina','Mixed Ethnicity','Native American','White'],
+      'Skin Tone':['Almond','Amber','Bronze','Caramel','Chestnut','Fair','Golden Brown','Honey','Olive','Tan','Warm Brown'],
+      Age:['Adult','30s','40s','50s','Mature Adult'],
+      'Generator Mode':['Boat Babe Fishing','Freshwater Glam','Glam Camping Fishing','Lake Day Diva','Outdoor Girl Era','Women Who Fish'],
+      'Main Object / Fish':['Brook Trout','Catfish','Crappie','Largemouth Bass','Perch','Smallmouth Bass','Trout','Walleye'],
+      'Fish Expression / Pose':['Centered Badge Pose','Dramatic Side Profile','Profile Logo Pose','Side Profile Bass','Top Water Strike','Vertical Jump Pose'],
+      Accessories:['Bandana','Baseball Cap','Camo Hat','Fishing Gloves','Sun Hat','Tackle Box','Trucker Hat','Waterproof Boots'],
+      'Objects / Props':['Boat','Campfire','Dock','Fishing Rod','Lantern','Pine Trees','Tackle Box','Wood Dock'],
+      'Typography Style':['Distressed Outdoor Font','Lake Sign Typography','Retro 70s Letters','Vintage Bait Shop Text','Vintage Camp Font','Western Fishing Font'],
+      'Text Placement':['Badge Circle Layout','Curved Badge Text','Ribbon Banner Text','Text Around Circle','Text Top And Bottom'],
+      'Background / Environment':['Campground','Forest Campground','Lake Dock','Mountain Lake','Outdoor Camping Scene','Rustic Lake Sign','Vintage Cream Poster'],
+      'Mood / Vibe':['Adventurous','Chill','Outdoorsy','Retro','Southern Charm','Vintage','Weekend Vibes'],
+      'Art Style':['Retro Fishing Shirt Graphic','Retro Outdoor Patch','Vintage Bait Shop Sign','Vintage Camp Shirt Art','Vintage Decal Design'],
+      'Color Palette':['Cream + Pink + Teal','Emerald + Gold','Lake Blue + Pink','Sunset Orange + Lake Blue','Teal + Coral','White + Pink + Gold'],
+      'Special Effects':['Distressed Ink','Retro Grain','Sun Ray Glow','Vintage Fade','Water Rings','Woodcut Texture'],
+      'Product Type':['Hat Patch','Hoodie Graphic','Lake House Sign','Mug Design','T-Shirt Graphic','Wood Sign Design'],
+      'Finish / Quality':['Distressed Vintage Texture','Matte Print Finish','Merch Ready Finish','Print-Ready','Vintage Distressed Finish']
+    }
+  ],
+  dad: [
+    {
+      name:'Classic Father’s Day Dad',
+      Gender:'Male',
+      Ethnicity:['African American','Black','Hispanic','Latino','Mixed Ethnicity','White'],
+      'Skin Tone':['Almond','Bronze','Caramel','Chestnut','Cocoa','Fair','Golden Brown','Light Brown','Medium Brown','Tan','Warm Brown'],
+      Age:['Adult','30s','40s','50s','Classic Dad Age','Middle Aged'],
+      'Generator Mode':['Best Dad Fishing','Dad Fishing Humor','Father’s Day Fishing','Reel Cool Dad','World’s Best Fishing Dad'],
+      'Main Object / Fish':['Aggressive Bass','Bass Breaking Water','Classic Trophy Bass','Father’s Day Bass','Largemouth Bass','Open Mouth Bass','Realistic Bass'],
+      'Dad Character / Accessories':['Beard Dad Character','Dad Hat','Fishing Vest','Flannel Shirt','Sunglasses','Trucker Hat'],
+      'Objects / Props':['Boat','Cooler','Dock','Fishing Rod','Lake','Reel','Tackle Box','Thermos'],
+      'Typography Style':['Badge Logo Lettering','Bold Block Font','Clean Masculine Font','Distressed Outdoor Font','Varsity Dad Font','Vintage Sportsman Typography'],
+      'Text Placement':['Badge Circle Layout','Centered Stacked Text','Large Text On Bottom','Large Text On Top','Ribbon Banner Text','Text Top And Bottom'],
+      'Background / Environment':['Black Shirt Background','Boat On Water','Fishing Dock','Lake Sunset','Sunset Lake','Vintage Cream Poster'],
+      'Mood / Vibe':['Dad Joke','Father’s Day','Funny','Gift-Ready','Masculine','Proud Dad','Warm'],
+      'Art Style':['Glossy Vector Mascot','Retro Fishing Shirt Graphic','Rustic Badge Logo','Sublimation Design','Vintage Americana Outdoor Poster'],
+      'Color Palette':['Black + Cream','Blue + Orange + Cream','Lake Blue + Sunset Yellow','Navy + Cream + Orange','Royal Blue + Gold + Black'],
+      'Special Effects':['Airbrush Highlights','Badge Shadow','Sun Rays','Water Splash','White Highlight Streaks'],
+      'Product Type':['Father’s Day T-Shirt','Gift Poster','Mug Design','PNG Design','Tumbler Wrap'],
+      'Finish / Quality':['8K Ultra Crisp','Clean Vector Edges','Commercial POD Quality','High Contrast','Print-Ready','Sublimation Ready']
+    },
+    {
+      name:'Rustic Grandpa Fishing',
+      Gender:'Male',
+      Ethnicity:['African American','Black','Hispanic','Latino','Mixed Ethnicity','Native American','White'],
+      'Skin Tone':['Amber','Bronze','Caramel','Chestnut','Cocoa','Fair','Golden Brown','Mahogany','Medium Brown','Tan','Warm Brown'],
+      Age:['60s','70s','Baby Boomer','Grandpa Age','Older Adult','Retired Age','Senior','Wise Elder'],
+      'Generator Mode':['Fishing Grandpa','Grandpa Fishing','Grandpa Reel Legacy','Grandpa’s Fishing Crew','Papa Fishing','Rustic Dad Gift'],
+      'Main Object / Fish':['Brook Trout','Catfish','Classic Trophy Bass','Crappie','Largemouth Bass','Realistic Bass','Trout','Walleye','Woodcut Bass'],
+      'Dad Character / Accessories':['Grandpa Hat','Fishing Vest','Flannel Shirt','Plaid Shirt','Rustic Hat','Vintage Cap','Walking Stick','Worn Boots'],
+      'Objects / Props':['Bait Bucket','Campfire','Fishing Chair','Fishing Dock','Lantern','Lake Cabin','Lodge Sign','Thermos','Wood Sign'],
+      'Typography Style':['Campground Sign Font','Heavy Slab Serif','Rustic Wood Sign Lettering','Vintage Fishing Font','Western Outdoor Font','Woodcut Lettering'],
+      'Text Placement':['Badge Circle Layout','Centered Badge Seal','Patch Logo Layout','Ribbon Banner Text','Wood Sign Text'],
+      'Background / Environment':['Cabin By Lake','Campfire Night','Cream Vintage Background','Fishing Lodge','Forest Lake','Rustic Wood Texture','Wood Grain Background'],
+      'Mood / Vibe':['Cozy','Gift-Ready','Grandpa Love','Heartwarming','Heritage','Legacy','Nostalgic','Rustic','Vintage','Wholesome'],
+      'Art Style':['Fishing Lodge Logo','Retro Outdoor Patch','Rustic Badge Logo','Vintage Fishing Patch','Woodcut Illustration'],
+      'Color Palette':['Brown + Cream','Cream + Forest Green','Dark Green + Gold','Forest Green + Tan','Rustic Brown + Gold','Warm Brown + Tan'],
+      'Special Effects':['Aged Texture','Grain Overlay','Old Paper Texture','Vintage Distress','Weathered Texture','Wood Grain'],
+      'Product Type':['Coffee Mug Design','Gift Poster','Grandpa Mug','Lake House Sign','T-Shirt Graphic','Wood Sign Design'],
+      'Finish / Quality':['Distressed Vintage Texture','Matte Outdoor Print','Merch Ready Finish','Vintage Distressed Finish','Worn T-Shirt Finish']
+    },
+    {
+      name:'Funny Dad Fishing Shirt',
+      Gender:'Male',
+      Ethnicity:['African American','Black','Hispanic','Latino','Mixed Ethnicity','White'],
+      'Skin Tone':['Almond','Bronze','Caramel','Cocoa','Fair','Golden Brown','Light Brown','Medium Brown','Olive','Tan'],
+      Age:['Adult','30s','40s','50s','Classic Dad Age','Middle Aged'],
+      'Generator Mode':['Dad Gone Fishing','Dad Life Fishing','Dad Reel Legend','Dad’s Fishing Crew','Funny Fishing Dad','One More Cast Dad'],
+      'Main Object / Fish':['Aggressive Bass','Big Mouth Bass','Cartoon Fish Mascot','Catfish','Jumping Fish','Largemouth Bass','Sport Fish Mascot'],
+      'Dad Character / Accessories':['Baseball Cap','Beer Belly Cartoon Dad','Dad Hat','Dad Glasses','Fishing Hoodie','Retro Sunglasses','Trucker Hat'],
+      'Objects / Props':['Bait Shop Sign','Boat','Cooler','Fishing Hook','Fishing Rod','Lake Waves','Tackle Box'],
+      'Typography Style':['Angled Poster Font','Bold Block Font','Classic Dad Font','Cream Distressed Font','Shadow Block Font','Thick Cream Letters'],
+      'Text Placement':['Bottom Heavy Typography','Fish Breaking Text','Large Middle Word','Layered Vintage Poster','Text Split By Fish','Text Top And Bottom'],
+      'Background / Environment':['Black Shirt Background','Navy Shirt Background','Orange Sunset Circle','Retro Badge Background','Sunset Circle','Worn Black Background'],
+      'Mood / Vibe':['Cool Dad','Dad Joke','Funny','Humorous','Reel Humor','Sportsman','Weekend Vibes'],
+      'Art Style':['Bold Vector Mascot','Classic Dad Shirt Graphic','Commercial POD Graphic','Distressed T-Shirt Design','Sticker-Style Graphic'],
+      'Color Palette':['Black + Cream','Burnt Orange + Navy','Navy + Cream + Orange','Orange + Black','Red + Navy + White','Yellow + Navy'],
+      'Special Effects':['Bold Drop Shadow','Cracked Ink','Distressed Ink','Motion Lines','Screen Print Texture','Water Splash'],
+      'Product Type':['Father’s Day T-Shirt','Hoodie Graphic','Mug Design','PNG Design','Sticker','Tumbler Wrap'],
+      'Finish / Quality':['Clean Vector Edges','Commercial POD Quality','Crisp Printable Finish','Screen Print Ready','Strong Contrast Finish']
+    }
+  ]
+};
+
+function pickFromSmartFamily(type){
+  return SMART_FAMILIES[type][Math.floor(Math.random() * SMART_FAMILIES[type].length)];
+}
+
+function validOptionForLabel(type,label,value){
+  if(!value || value === 'None') return false;
+  const opts = DATA[type][label] || [];
+  return opts.includes(value);
+}
+
+function selectMeaningfulValue(type,label,family,currentValue){
+  const options = DATA[type][label] || ['None'];
+  let pool = [];
+  if(family && family[label]) {
+    const fam = Array.isArray(family[label]) ? family[label] : [family[label]];
+    pool = fam.filter(v => validOptionForLabel(type,label,v));
+  }
+  if(!pool.length) pool = options.filter(o => o !== 'None');
+  if(!pool.length) return 'None';
+  if(pool.length > 1) pool = pool.filter(v => v !== currentValue);
+  return pool[Math.floor(Math.random() * pool.length)] || options[1] || 'None';
+}
+
+function applyGenderLogic(type,family){
+  const genderSelect = document.getElementById(`${type}_gender`);
+  if(!genderSelect || isLocked(type,'Gender')) return;
+
+  // Women tab defaults to female, Dad tab defaults to male.
+  // This keeps the mini-generator theme from creating weird mismatches.
+  if(type === 'women') genderSelect.value = 'Female';
+  if(type === 'dad') genderSelect.value = 'Male';
+
+  // If a smart family has a gender, use it only when it is valid.
+  const famGender = family?.Gender;
+  if(famGender && [...genderSelect.options].some(o => o.value === famGender)) {
+    genderSelect.value = famGender;
+  }
+}
+
+function randomizeTextByFamily(type,family){
+  const mainText = document.getElementById(type+'_mainText');
+  const presetLock = document.getElementById(type+'_preset_lock');
+  if(presetLock?.classList.contains('locked')) return;
+
+  const presetList = DATA.presets[type].filter(p => p !== 'None');
+  let pool = presetList;
+  if(family?.name?.includes('Grandpa')) {
+    pool = presetList.filter(p => /grandpa|papa|legacy|crew/i.test(p));
+  }
+  if(family?.name?.includes('Funny')) {
+    pool = presetList.filter(p => /fish|dad|cast|hook|reel|therapy|gone/i.test(p));
+  }
+  if(type === 'women' && family?.name?.includes('Glam')) {
+    pool = presetList.filter(p => /queen|girls|glitter|pink|baddie|glam|cute|sparkle|bougie/i.test(p));
+  }
+  if(!pool.length) pool = presetList;
+
+  const current = mainText.value.trim().toLowerCase();
+  let filtered = pool.length > 1 ? pool.filter(p => p.toLowerCase() !== current) : pool;
+  mainText.value = filtered[Math.floor(Math.random()*filtered.length)].toUpperCase();
+}
+
+
+function openTab(tab){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(tab).classList.add('active');
+  document.querySelector(`[data-tab="${tab}"]`)?.classList.add('active');
+  if(tab==='saved') renderSaved();
+}
+document.querySelectorAll('.tab-btn').forEach(btn=>btn.addEventListener('click',()=>openTab(btn.dataset.tab)));
+
+function slug(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'');}
+
+function makeSelect(type,label,options){
+  const id = `${type}_${slug(label)}`;
+  const customId = `${id}_custom`;
+  const lockId = `${id}_lock`;
+  const div=document.createElement('div');
+  div.className='field-wrap';
+  div.innerHTML=`
+    <div class="field-head">
+      <label>${label}</label>
+      <button type="button" class="lock-btn" id="${lockId}" onclick="toggleLock('${lockId}')">🔓 Lock</button>
+    </div>
+    <select id="${id}">${options.map(o=>`<option value="${escapeAttr(o)}">${o}</option>`).join('')}</select>
+    ${label === 'Gender' ? '' : `<input class="custom-input" id="${customId}" placeholder="Custom ${label} text">`}
+  `;
+  return div;
+}
+
+function escapeAttr(str){return String(str).replace(/"/g,'&quot;');}
+
+function toggleLock(lockId){
+  const btn = document.getElementById(lockId);
+  btn.classList.toggle('locked');
+  btn.textContent = btn.classList.contains('locked') ? '🔒 Locked' : '🔓 Lock';
+}
+
+function toggleColorLock(inputId){
+  const btn = document.getElementById(inputId + '_lock');
+  const input = document.getElementById(inputId);
+  const locked = btn.classList.toggle('locked');
+  btn.textContent = locked ? '🔒 Locked' : '🔓 Lock';
+  input.dataset.locked = locked ? 'true' : '';
+}
+
+function isColorLocked(type,key){
+  return document.getElementById(type+'_'+key)?.dataset.locked === 'true';
+}
+
+function isLocked(type,label){
+  return document.getElementById(`${type}_${slug(label)}_lock`)?.classList.contains('locked');
+}
+
+function init(){
+  ['women','dad'].forEach(type=>{
+    const form=document.getElementById(type+'Form');
+    form.innerHTML='';
+    Object.keys(DATA[type]).forEach(label=>form.appendChild(makeSelect(type,label,DATA[type][label])));
+    const preset=document.getElementById(type+'_preset');
+    preset.innerHTML=DATA.presets[type].map(p=>`<option value="${escapeAttr(p)}">${p}</option>`).join('');
+    preset.addEventListener('change',()=>{ if(preset.value!=='None') document.getElementById(type+'_mainText').value=preset.value.toUpperCase(); });
+    const note=document.createElement('p');
+    note.className='cycle-note';
+    note.textContent='Smart Random avoids obvious repeated full combinations and respects locked categories whenever possible.';
+    form.after(note);
+  });
+}
+
+function getVal(type,label){
+  const base = document.getElementById(`${type}_${slug(label)}`)?.value || 'None';
+  const custom = document.getElementById(`${type}_${slug(label)}_custom`)?.value.trim() || '';
+  if(custom) return base && base !== 'None' ? `${base} + custom detail: ${custom}` : custom;
+  return base;
+}
+
+function line(label,val){return val && val!=='None' ? `${label}: ${val}\n` : '';}
+function val(type,key){return document.getElementById(type+'_'+key).value;}
+
+
+function getColorPickerLine(type){
+  const colorMap = [
+    ['Primary Color','primary'],
+    ['Secondary Color','secondary'],
+    ['Accent Color','accent'],
+    ['Text Color','textColor'],
+    ['Glow Color','glow'],
+    ['Background Color','bg']
+  ];
+  return colorMap.map(([label,key])=>{
+    const el = document.getElementById(type + '_' + key);
+    return `${label}: ${el ? el.value : 'not selected'}`;
+  }).join(', ');
+}
+
+function getReadableColorNotes(type){
+  const palette = getVal(type,'Color Palette');
+  const pickerLine = getColorPickerLine(type);
+  return `Color Palette: ${palette && palette !== 'None' ? palette : 'Custom picker colors'}\nSelected Color Picker Values: ${pickerLine}\nUse these exact selected colors as the visual color direction for the graphic, typography, glow, background, accents, and printable finish.`;
+}
+
+function generatePrompt(type){
+  const main=document.getElementById(type+'_mainText').value.trim();
+  const sub=document.getElementById(type+'_subText').value.trim();
+  const custom=document.getElementById(type+'_custom').value.trim();
+  const title = type==='women' ? 'Women Who Fish' : 'Father’s Day Fishing';
+  let prompt=`Create a high-quality, print-ready fishing graphic design for the ${title} mini-generator.\n\n`;
+  prompt += line('Generator Mode', getVal(type,'Generator Mode'));
+  prompt += line('Gender', getVal(type,'Gender'));
+  prompt += line('Ethnicity', getVal(type,'Ethnicity'));
+  prompt += line('Skin Tone', getVal(type,'Skin Tone'));
+  prompt += line('Age', getVal(type,'Age'));
+  prompt += line('Main Object / Fish', getVal(type,'Main Object / Fish'));
+  prompt += line(type==='women' ? 'Fish Expression / Pose' : 'Dad Character / Accessories', getVal(type, type==='women' ? 'Fish Expression / Pose' : 'Dad Character / Accessories'));
+  if(type==='women') prompt += line('Accessories', getVal(type,'Accessories'));
+  prompt += line('Objects / Props', getVal(type,'Objects / Props'));
+  prompt += main ? `Main Text / Slogan: "${main}"\n` : '';
+  prompt += sub ? `Subtext: "${sub}"\n` : '';
+  prompt += line('Typography Style', getVal(type,'Typography Style'));
+  prompt += line('Text Placement', getVal(type,'Text Placement'));
+  prompt += line('Background / Environment', getVal(type,'Background / Environment'));
+  prompt += line('Mood / Vibe', getVal(type,'Mood / Vibe'));
+  prompt += line('Art Style', getVal(type,'Art Style'));
+  prompt += getReadableColorNotes(type) + `\n`;
+  prompt += line('Special Effects', getVal(type,'Special Effects'));
+  prompt += line('Product Type', getVal(type,'Product Type'));
+  prompt += line('Finish / Quality', getVal(type,'Finish / Quality'));
+  prompt += custom ? `Custom Extra Details: ${custom}\n` : '';
+  prompt += `\nArt Style Direction: bold commercial fishing t-shirt illustration, glossy vector mascot art, retro lake-life merch, thick black outlines, clean readable typography, high contrast, sticker-style contour cut, sublimation/DTF-ready design, detailed fish scales and fins, dynamic water motion, polished printable finish.\n`;
+  prompt += `\nNegative Prompt: no blurry details, no warped fish anatomy, no unreadable text, no muddy colors, no low-resolution artwork, no messy layout, no cut-off subject, no weak contrast, no random crowns, no tiaras, no royal headpieces, no cluttered background.`;
+  document.getElementById(type+'_output').textContent=prompt;
+  return prompt;
+}
+
+function randomChoice(options, previousValue){
+  const usable = options.filter(o => o !== 'None');
+  if(!usable.length) return 'None';
+  const pool = usable.length > 1 ? usable.filter(o => o !== previousValue) : usable;
+  return pool[Math.floor(Math.random()*pool.length)];
+}
+
+function comboSignature(type){
+  return Object.keys(DATA[type]).map(label => document.getElementById(`${type}_${slug(label)}`)?.value || 'None').join('|') + '|' + (document.getElementById(type+'_mainText').value || '');
+}
+
+function smartRandom(type){
+  const family = pickFromSmartFamily(type);
+  let attempts = 0;
+  let sig = '';
+
+  do {
+    applyGenderLogic(type, family);
+
+    Object.keys(DATA[type]).forEach(label=>{
+      if(isLocked(type,label)) return;
+
+      // Gender gets handled by applyGenderLogic so it stays theme-safe.
+      if(label === 'Gender') return;
+
+      const sel = document.getElementById(`${type}_${slug(label)}`);
+      if(!sel) return;
+
+      const current = sel.value;
+      sel.value = selectMeaningfulValue(type,label,family,current);
+    });
+
+    randomizeTextByFamily(type,family);
+
+    // Meaningful color sets instead of totally chaotic random colors.
+    const colorSets = type === 'women'
+      ? [
+          ['#ff3fa4','#00d8ff','#f7c948','#ffffff','#ff3fa4','#050510'],
+          ['#ff4fb8','#35e7ff','#ffffff','#ffffff','#f7c948','#111020'],
+          ['#0b2cff','#f7c948','#ff3fa4','#ffffff','#f7c948','#050510'],
+          ['#ff66c4','#7df9ff','#ffe066','#ffffff','#ff66c4','#0b1026'],
+          ['#111111','#ff3fa4','#00d8ff','#ffffff','#ff3fa4','#000000']
+        ]
+      : [
+          ['#0b2cff','#f7c948','#ff7a18','#ffffff','#f7c948','#050510'],
+          ['#16213e','#f2d16b','#e8751a','#fff8dc','#f2d16b','#070714'],
+          ['#2f4f2f','#d8b26e','#8b5a2b','#fff3d0','#d8b26e','#11110b'],
+          ['#111111','#f5e6c8','#ff8c42','#ffffff','#ff8c42','#000000'],
+          ['#1f3b57','#f6c85f','#e4572e','#ffffff','#f6c85f','#090d14']
+        ];
+
+    const lastColorSet = localStorage.getItem(type + 'LastColorSet') || '';
+    let colorChoices = colorSets.filter(set => set.join('|') !== lastColorSet);
+    if(!colorChoices.length) colorChoices = colorSets;
+    const colors = colorChoices[Math.floor(Math.random()*colorChoices.length)];
+    localStorage.setItem(type + 'LastColorSet', colors.join('|'));
+
+    ['primary','secondary','accent','textColor','glow','bg'].forEach((k,i)=>{
+      const input = document.getElementById(type+'_'+k);
+      if(input && !isColorLocked(type,k)) {
+        input.value = colors[i];
+        input.dispatchEvent(new Event('input', {bubbles:true}));
+        input.dispatchEvent(new Event('change', {bubbles:true}));
+      }
+    });
+
+    sig = comboSignature(type);
+    attempts++;
+  } while(randomHistory[type].includes(sig) && attempts < 100);
+
+  randomHistory[type].unshift(sig);
+  randomHistory[type] = [...new Set(randomHistory[type])].slice(0, RANDOM_HISTORY_LIMIT);
+  localStorage.setItem(type+'RandomHistory', JSON.stringify(randomHistory[type]));
+
+  generatePrompt(type);
+}
+
+function randomColor(){return '#'+Math.floor(Math.random()*16777215).toString(16).padStart(6,'0');}
+
+function copyPrompt(type){
+  const text=document.getElementById(type+'_output').textContent || generatePrompt(type);
+  navigator.clipboard.writeText(text);
+  alert('Prompt copied as plain text.');
+}
+
+function clearForm(type){
+  document.querySelectorAll(`#${type}Form select`).forEach(s=>s.value='None');
+  document.querySelectorAll(`#${type}Form .custom-input`).forEach(i=>i.value='');
+  document.querySelectorAll(`#${type}Form .lock-btn.locked`).forEach(btn=>{btn.classList.remove('locked');btn.textContent='🔓 Lock';});
+  ['mainText','subText','preset','custom'].forEach(k=>{let el=document.getElementById(type+'_'+k); if(el) el.value = k==='preset' ? 'None' : '';});
+  const defaults = type === 'women'
+    ? {primary:'#ff3fa4',secondary:'#00d8ff',accent:'#f7c948',textColor:'#ffffff',glow:'#ff3fa4',bg:'#050510'}
+    : {primary:'#0b2cff',secondary:'#f7c948',accent:'#ff7a18',textColor:'#ffffff',glow:'#f7c948',bg:'#050510'};
+  Object.keys(defaults).forEach(k=>{
+    const el=document.getElementById(type+'_'+k);
+    const btn=document.getElementById(type+'_'+k+'_lock');
+    if(el){ el.value=defaults[k]; el.dataset.locked=''; }
+    if(btn){ btn.classList.remove('locked'); btn.textContent='🔓 Lock'; }
+  });
+  document.getElementById(type+'_output').textContent='';
+}
+
+function savePrompt(type){
+  const prompt=document.getElementById(type+'_output').textContent || generatePrompt(type);
+  const saved=JSON.parse(localStorage.getItem('fishingPrompts')||'[]');
+  saved.unshift({type, prompt, time:new Date().toLocaleString()});
+  localStorage.setItem('fishingPrompts',JSON.stringify(saved));
+  alert('Prompt saved.');
+}
+
+function renderSaved(){
+  const saved=JSON.parse(localStorage.getItem('fishingPrompts')||'[]');
+  const box=document.getElementById('savedList');
+  if(!saved.length){box.innerHTML='<p>No saved prompts yet.</p>';return;}
+  box.innerHTML=saved.map((item,i)=>`<div class="saved-card"><p class="small">${item.time} • ${item.type==='women'?'Women Who Fish':'Father’s Day Fishing'}</p><pre class="output">${escapeHtml(item.prompt)}</pre><button class="btn" onclick="navigator.clipboard.writeText(JSON.parse(localStorage.getItem('fishingPrompts'))[${i}].prompt)">Copy</button> <button class="btn" onclick="deleteSaved(${i})">Delete</button></div>`).join('');
+}
+
+function escapeHtml(str){return str.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));}
+function deleteSaved(i){const saved=JSON.parse(localStorage.getItem('fishingPrompts')||'[]');saved.splice(i,1);localStorage.setItem('fishingPrompts',JSON.stringify(saved));renderSaved();}
+function clearSaved(){if(confirm('Clear all saved prompts?')){localStorage.removeItem('fishingPrompts');renderSaved();}}
+
+function getLockedIdentityLines(type){
+  const identityLabels = ['Gender','Ethnicity','Skin Tone','Age'];
+  let lines = [];
+  identityLabels.forEach(label=>{
+    const value = getVal(type,label);
+    const locked = isLocked(type,label);
+    if(value && value !== 'None'){
+      lines.push(`${label}: ${value}${locked ? ' — LOCKED, do not change this identity detail' : ''}`);
+    }
+  });
+  return lines.length ? lines.join('\n') : 'No locked identity rules selected.';
+}
+
+function getLockedCategoryLines(type){
+  let lines = [];
+  Object.keys(DATA[type]).forEach(label=>{
+    if(isLocked(type,label)){
+      const value = getVal(type,label);
+      if(value && value !== 'None') lines.push(`${label}: ${value} — LOCKED, preserve exactly`);
+    }
+  });
+  return lines.length ? lines.join('\n') : 'No locked category rules selected.';
+}
+
+function variations(type){
+  const base = generatePrompt(type);
+  const identityRules = getLockedIdentityLines(type);
+  const categoryRules = getLockedCategoryLines(type);
+
+  const variationStyles = [
+    {
+      title:'VARIATION 1 — Fresh Composition',
+      instruction:'Create a new layout/composition while preserving all locked identity rules and locked category rules. Keep the main character identity, gender, ethnicity, skin tone, age, slogan, fish theme, and selected locked details consistent. Refresh the pose flow, spacing, visual balance, background arrangement, and product-ready layout.'
+    },
+    {
+      title:'VARIATION 2 — Fresh Typography Layout',
+      instruction:'Create a new typography treatment while preserving all locked identity rules and locked category rules. Keep the main slogan exactly the same. Change only the text hierarchy, placement, outline treatment, shadow style, badge/ribbon arrangement, and readability polish.'
+    },
+    {
+      title:'VARIATION 3 — Fresh Effects And Finish',
+      instruction:'Create a new effects-and-finish variation while preserving all locked identity rules and locked category rules. Keep the same core subject and slogan, but refresh lighting, glow, splash motion, sparkle accents, printable finish, and merch-ready polish.'
+    }
+  ];
+
+  const text = variationStyles.map(v => `${v.title}
+
+LOCKED IDENTITY RULES:
+${identityRules}
+
+LOCKED CATEGORY RULES:
+${categoryRules}
+
+BASE PROMPT:
+${base}
+
+VARIATION INSTRUCTION:
+${v.instruction}
+
+NEGATIVE SAFETY:
+Do not change locked gender, ethnicity, skin tone, age, main slogan, or any locked category. Do not add crowns, tiaras, royal headpieces, unreadable text, warped anatomy, blurry details, muddy colors, or messy clutter.`).join('\n\n---\n\n');
+
+  document.getElementById(type+'_output').textContent = text;
+}
+
+function qualityCheck(type){
+  const prompt = document.getElementById(type+'_output').textContent || generatePrompt(type);
+  const checks = [
+    ['Main slogan included', /Main Text \/ Slogan:\s*"/i.test(prompt)],
+    ['Product type included', /Product Type:/i.test(prompt)],
+    ['Art style included', /Art Style:/i.test(prompt)],
+    ['Background included', /Background \/ Environment:/i.test(prompt)],
+    ['Typography included', /Typography Style:/i.test(prompt)],
+    ['Color picker values included', /Selected Color Picker Values:/i.test(prompt)],
+    ['Finish quality included', /Finish \/ Quality:/i.test(prompt)],
+    ['Negative prompt included', /Negative Prompt:/i.test(prompt)],
+    ['No crown rule included', /no random crowns|no crowns|no tiaras|no royal headpieces/i.test(prompt)],
+    ['Identity details included when selected', /Gender:|Ethnicity:|Skin Tone:|Age:/i.test(prompt)]
+  ];
+
+  const missing = checks.filter(c => !c[1]).map(c => c[0]);
+  const score = Math.round(((checks.length - missing.length) / checks.length) * 100);
+
+  let advice = '';
+  if(score >= 90){
+    advice = '✅ Strong prompt. This is ready to copy.';
+  } else if(score >= 70){
+    advice = '⚠️ Good prompt, but add the missing pieces below for a cleaner result.';
+  } else {
+    advice = '🚨 Weak prompt. Add more details before using it so the AI does not freestyle nonsense.';
+  }
+
+  const report = `PROMPT QUALITY CHECKER
+
+Score: ${score}/100
+
+${advice}
+
+PASSED:
+${checks.filter(c => c[1]).map(c => '✅ ' + c[0]).join('\n')}
+
+NEEDS WORK:
+${missing.length ? missing.map(m => '❌ ' + m).join('\n') : 'Nothing major missing.'}
+
+LOCKED IDENTITY RULES:
+${getLockedIdentityLines(type)}
+
+LOCKED CATEGORY RULES:
+${getLockedCategoryLines(type)}
+
+CURRENT PROMPT:
+${prompt}`;
+
+  document.getElementById(type+'_output').textContent = report;
+}
+
+
+function extractPromptValue(prompt,label){
+  const pattern = new RegExp(label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ':\\s*\"?([^\\n\"]+)\"?', 'i');
+  const match = prompt.match(pattern);
+  return match ? match[1].trim() : '';
+}
+
+function generateVideoScript(type){
+  const prompt = document.getElementById(type+'_output').textContent || generatePrompt(type);
+
+  const title = type === 'women' ? 'Women Who Fish' : 'Father’s Day Fishing';
+  const gender = extractPromptValue(prompt,'Gender') || (type === 'women' ? 'Female' : 'Male');
+  const ethnicity = extractPromptValue(prompt,'Ethnicity');
+  const skinTone = extractPromptValue(prompt,'Skin Tone');
+  const age = extractPromptValue(prompt,'Age');
+  const fish = extractPromptValue(prompt,'Main Object / Fish') || 'fishing graphic character';
+  const mood = extractPromptValue(prompt,'Mood / Vibe') || 'bold and energetic';
+  const style = extractPromptValue(prompt,'Art Style') || 'glossy retro fishing graphic style';
+  const slogan = extractPromptValue(prompt,'Main Text / Slogan') || 'the main fishing slogan';
+  const effects = extractPromptValue(prompt,'Special Effects') || 'water splash motion and glow accents';
+  const product = extractPromptValue(prompt,'Product Type') || 'merch graphic';
+
+  let identity = [gender, ethnicity, skinTone, age].filter(v => v && v !== 'None').join(', ');
+  if(!identity) identity = type === 'women' ? 'female fishing character' : 'father fishing character';
+
+  const actionTone = type === 'women'
+    ? 'confident, sassy, glam fishing energy'
+    : 'proud, funny, Father’s Day fishing energy';
+
+  const script = `8-SECOND ANIMATED VIDEO SCRIPT
+
+Source: Main Generated Prompt
+Mini-Generator: ${title}
+
+Animation Direction:
+Create a short animation based on the existing ${product} concept. Do not create a new image prompt. Animate the selected design as if it came alive on screen while keeping the same character, theme, mood, style, and slogan.
+
+0:00–0:02
+The ${identity} design pops onto the screen in ${style}. The ${fish} snaps into motion with ${effects}. The movement should feel ${mood} and match ${actionTone}.
+
+0:02–0:04
+The character or fish reacts with a quick expressive motion: a wink, splash, cast, jump, hook pull, head tilt, fin flick, or confident pose. Keep the motion tied to the fishing theme and selected slogan.
+
+0:04–0:06
+The main slogan "${slogan}" bounces, glows, or slides into focus while the fish, hook, rod, splash, sparkles, or outdoor elements animate around it.
+
+0:06–0:08
+End with a clean merch-style hold. The character freezes in a bold final pose, the slogan stays readable, and the design finishes with a crisp glow, splash, sparkle, or vintage print-style pulse.
+
+Voiceover:
+"${slogan}."
+
+Motion Rules:
+Keep it short, punchy, and action-based. Do not add a full new scene. Do not rewrite the main design. Do not change locked identity details, gender, ethnicity, skin tone, age, slogan, fish theme, or selected style.`;
+
+  document.getElementById(type+'_video_output').textContent = script;
+}
+
+function copyVideoScript(type){
+  const box = document.getElementById(type+'_video_output');
+  const text = box.textContent || '';
+  if(!text.trim()){
+    generateVideoScript(type);
+  }
+  navigator.clipboard.writeText(document.getElementById(type+'_video_output').textContent);
+  alert('8-second video script copied.');
+}
+
+
+const MARKETING_BLOCKS = [
+  ['captions','Captions'],
+  ['hashtags','Hashtags'],
+  ['seo','SEO Keywords'],
+  ['cta','Calls to Action'],
+  ['email','Email Promo Copy'],
+  ['pinterest','Pinterest Promo Copy'],
+  ['tiktok','TikTok Promo Copy'],
+  ['facebook','Facebook Promo Copy'],
+  ['instagram','Instagram Promo Copy'],
+  ['youtube','YouTube Promo Copy'],
+  ['ad','Ad Copy']
+];
+
+function getMarketingSource(type){
+  const prompt = document.getElementById(type+'_output').textContent || generatePrompt(type);
+  const title = type === 'women' ? 'Women Who Fish' : 'Father’s Day Fishing';
+  const mode = extractPromptValue(prompt,'Generator Mode') || title;
+  const slogan = extractPromptValue(prompt,'Main Text / Slogan') || (type === 'women' ? 'REEL GIRLS FISH' : 'THE BASS FATHER');
+  const subtext = extractPromptValue(prompt,'Subtext');
+  const product = extractPromptValue(prompt,'Product Type') || (type === 'women' ? 'fishing merch design' : 'Father’s Day fishing gift');
+  const fish = extractPromptValue(prompt,'Main Object / Fish') || 'fishing graphic';
+  const audience = type === 'women' ? 'women who fish, lake-life girls, fishing besties, and gift buyers' : 'dads, grandpas, fishing lovers, Father’s Day shoppers, and gift buyers';
+  const style = extractPromptValue(prompt,'Art Style') || 'bold printable fishing graphic';
+  const mood = extractPromptValue(prompt,'Mood / Vibe') || (type === 'women' ? 'fun, glam, and confident' : 'funny, warm, and gift-ready');
+  const palette = extractPromptValue(prompt,'Color Palette') || 'custom color palette';
+  const placement = extractPromptValue(prompt,'Text Placement') || 'readable merch layout';
+  const background = extractPromptValue(prompt,'Background / Environment') || 'fishing-inspired background';
+  const finish = extractPromptValue(prompt,'Finish / Quality') || 'print-ready finish';
+  const url = '[PASTE YOUR PRODUCT PAGE LINK HERE]';
+  return {prompt,title,mode,slogan,subtext,product,fish,audience,style,mood,palette,placement,background,finish,url};
+}
+
+function generateMarketingSuite(type){
+  const s = getMarketingSource(type);
+  const angle = type === 'women'
+    ? 'confident women-who-fish energy with a cute, bold, giftable vibe'
+    : 'Father’s Day fishing gift energy with humor, pride, and lake-life nostalgia';
+
+  const captions = [
+    `1. ${s.slogan} 🎣 A bold ${s.product} made for ${s.audience}. Perfect for lake days, fishing trips, gift bundles, and merch that actually gets noticed. Shop here: ${s.url}`,
+    `2. This ${s.mode} design brings ${s.mood} energy, ${s.fish}, and ${s.style} polish together in one scroll-stopping product. Grab yours: ${s.url}`,
+    `3. For the fishing lover who needs more than a plain boring design. ${s.slogan} is built for gifts, laughs, and lake-life attention. Shop now: ${s.url}`
+  ].join('\n\n');
+
+  const hashtags = [`#FishingMerch`, `#FishingGift`, `#LakeLife`, `#FishingLife`, `#${type === 'women' ? 'WomenWhoFish' : 'FathersDayGift'}`, `#BassFishing`, `#FishingShirt`, `#FishingMug`, `#OutdoorGifts`, `#GiftIdeas`, `#CustomMerch`, `#PrintOnDemand`, `#SmallBusinessFinds`, `#ShopSmall`, `#${s.slogan.replace(/[^a-z0-9]/gi,'')}`].join(' ');
+
+  const seo = [
+    `${s.slogan} ${s.product}`,
+    `${s.mode} fishing design`,
+    `${type === 'women' ? 'women who fish gift' : 'Father’s Day fishing gift'}`,
+    `${s.fish} merch design`,
+    `${s.style} fishing graphic`,
+    `lake life ${s.product}`,
+    `funny fishing ${s.product}`,
+    `print ready fishing design`,
+    `bass fishing gift idea`,
+    `fishing lover gift`,
+    `custom fishing merch`,
+    `${s.mood} fishing design`
+  ].join('\n');
+
+  const cta = [
+    `Shop the ${s.slogan} design now: ${s.url}`,
+    `Grab this ${s.product} before your next lake day: ${s.url}`,
+    `Turn this fishing vibe into your next favorite gift: ${s.url}`,
+    `Click here to get the design: ${s.url}`,
+    `Make your fishing merch stand out today: ${s.url}`
+  ].join('\n');
+
+  const email = `Subject: A fishing gift that does not look basic\n\nHey friend,\n\nIf you need a fishing gift with personality, this one is built to stand out. The ${s.slogan} design combines ${s.fish}, ${s.background}, ${s.palette}, and ${s.style} for a ${s.mood} look that works beautifully on ${s.product}.\n\nIt is perfect for ${s.audience}. Use it for gifts, lake-day merch, fishing trips, or product drops that need more personality than the usual plain design.\n\nShop it here: ${s.url}\n\nDo not wait until the last minute. Fishing people are picky, and boring gifts get side-eyed.`;
+
+  const pinterest = `Pinterest Title:\n${s.slogan} ${s.product} | Fishing Gift Idea\n\nPinterest Description:\nLooking for a standout fishing gift? This ${s.product} features ${s.fish}, ${s.style}, ${s.background}, and a ${s.mood} vibe. Perfect for ${s.audience}, lake days, Father’s Day, fishing trips, shirts, mugs, stickers, tumblers, and giftable merch. Shop here: ${s.url}`;
+
+  const tiktok = `TikTok Hook:\nPOV: You found a fishing design that is not boring.\n\nVideo Caption:\n${s.slogan} 🎣 This ${s.product} is made for ${s.audience} who want lake-life merch with personality. ${s.mood}, bold, and gift-ready.\n\nOn-Screen Text Ideas:\n• Fishing merch that actually pops\n• Gift idea for fishing lovers\n• ${s.slogan}\n• Shop the design\n\nCTA:\nTap the link and grab yours: ${s.url}`;
+
+  const facebook = `Facebook Post:\nFishing lovers deserve better than boring gifts. 🎣\n\nThis ${s.slogan} ${s.product} brings ${s.mood} energy, ${s.fish}, ${s.style}, and a clean ${s.finish}. It is perfect for ${s.audience}, lake trips, gift baskets, Father’s Day, birthdays, and everyday fishing pride.\n\nShop here: ${s.url}`;
+
+  const instagram = `Instagram Caption:\n${s.slogan} 🎣✨\n\nA ${s.mood} ${s.product} made for ${s.audience}. Designed with ${s.fish}, ${s.background}, ${s.palette}, ${s.placement}, and ${s.style} so it looks bold on merch and scroll-stopping in promos.\n\nShop the look: ${s.url}\n\n${hashtags}`;
+
+  const youtube = `YouTube Promo Copy:\nTitle: ${s.slogan} Fishing ${s.product} | Gift Idea for Fishing Lovers\n\nDescription:\nThis ${s.product} was created for ${s.audience}. The design features ${s.fish}, ${s.background}, ${s.palette}, and ${s.style} with a ${s.mood} finish that works for shirts, mugs, stickers, tumblers, decals, and gift products.\n\nShop here: ${s.url}\n\nKeywords: ${seo.replace(/\n/g, ', ')}`;
+
+  const ad = `Ad Copy Option 1:\nStop giving fishing lovers boring gifts. The ${s.slogan} ${s.product} is bold, funny, gift-ready, and made to stand out. Shop now: ${s.url}\n\nAd Copy Option 2:\nNeed a fishing gift that gets attention? This ${s.mood} ${s.product} brings ${s.fish}, ${s.style}, and lake-life energy together in one polished design. Get it here: ${s.url}\n\nAd Copy Option 3:\nBuilt for ${s.audience}. Designed for lake days, laughs, gifts, and merch that sells. Shop ${s.slogan}: ${s.url}`;
+
+  const outputs = {captions,hashtags,seo,cta,email,pinterest,tiktok,facebook,instagram,youtube,ad};
+  Object.keys(outputs).forEach(key=>{
+    const box = document.getElementById(`${type}_marketing_${key}`);
+    if(box) box.textContent = outputs[key];
+  });
+}
+
+function copyMarketingBlock(type,key){
+  const box = document.getElementById(`${type}_marketing_${key}`);
+  if(!box || !box.textContent.trim()) generateMarketingSuite(type);
+  navigator.clipboard.writeText(document.getElementById(`${type}_marketing_${key}`).textContent);
+  const label = MARKETING_BLOCKS.find(item => item[0] === key)?.[1] || 'Marketing block';
+  alert(label + ' copied.');
+}
+
+function copyAllMarketing(type){
+  const anyFilled = MARKETING_BLOCKS.some(([key]) => document.getElementById(`${type}_marketing_${key}`)?.textContent.trim());
+  if(!anyFilled) generateMarketingSuite(type);
+  const text = MARKETING_BLOCKS.map(([key,label]) => `${label.toUpperCase()}\n\n${document.getElementById(`${type}_marketing_${key}`)?.textContent || ''}`).join('\n\n---\n\n');
+  navigator.clipboard.writeText(text);
+  alert('Full Marketing Content Suite copied.');
+}
+
+function clearMarketingSuite(type){
+  MARKETING_BLOCKS.forEach(([key])=>{
+    const box = document.getElementById(`${type}_marketing_${key}`);
+    if(box) box.textContent = '';
+  });
+}
+
+
+const CUSTOM_GPT_BLOCKS = [
+  ['instructions','Custom GPT Instructions'],
+  ['starters','Starter Questions'],
+  ['knowledge','Knowledge']
+];
+
+function getCustomGPTSource(type){
+  const prompt = document.getElementById(type+'_output').textContent || generatePrompt(type);
+  const title = type === 'women' ? 'Women Who Fish' : 'Father’s Day Fishing';
+  const generatorPurpose = type === 'women'
+    ? 'Create bold, glam, funny, and merch-ready fishing graphic prompts for women who fish, lake-life girls, fishing besties, boutique sellers, and gift buyers.'
+    : 'Create rustic, funny, emotional, and gift-ready fishing graphic prompts for dads, grandpas, Father’s Day shoppers, outdoorsmen, and fishing families.';
+  const categories = Object.keys(DATA[type] || {}).join(', ');
+  const presetList = (DATA.presets && DATA.presets[type] ? DATA.presets[type] : []).filter(x => x !== 'None').join(', ');
+  const mode = extractPromptValue(prompt,'Generator Mode') || title;
+  const slogan = extractPromptValue(prompt,'Main Text / Slogan') || (type === 'women' ? 'REEL GIRLS FISH' : 'THE BASS FATHER');
+  const subtext = extractPromptValue(prompt,'Subtext') || 'optional supporting line';
+  const product = extractPromptValue(prompt,'Product Type') || (type === 'women' ? 'T-Shirt Graphic, Mug Design, Sticker Pack, Tumbler Wrap, DTF Transfer, PNG Design, or printable merch product' : 'Father’s Day T-Shirt, Mug Design, Decal, Poster, Tumbler Wrap, DTF Transfer, PNG Design, or gift product');
+  const fish = extractPromptValue(prompt,'Main Object / Fish') || 'selected fish or fishing mascot';
+  const style = extractPromptValue(prompt,'Art Style') || 'bold commercial fishing t-shirt illustration, glossy vector mascot art, retro lake-life merch, thick black outlines, clean readable typography';
+  const mood = extractPromptValue(prompt,'Mood / Vibe') || (type === 'women' ? 'glam, sassy, cute, outdoorsy, and confident' : 'funny, warm, nostalgic, rustic, proud, and gift-ready');
+  const colors = extractPromptValue(prompt,'Selected Color Picker Values') || extractPromptValue(prompt,'Color Pickers') || 'primary, secondary, accent, text, glow, and background color picker values';
+  const background = extractPromptValue(prompt,'Background / Environment') || 'selected lake, sunset, cabin, dock, water, transparent, or merch-ready background';
+  const finish = extractPromptValue(prompt,'Finish / Quality') || 'print-ready, POD-ready, crisp, clean, high-resolution finish';
+  return {prompt,title,generatorPurpose,categories,presetList,mode,slogan,subtext,product,fish,style,mood,colors,background,finish,type};
+}
+
+function generateCustomGPTSuite(type){
+  const s = getCustomGPTSource(type);
+  const audience = type === 'women'
+    ? 'women who fish, fishing besties, lake-life shoppers, boutique merch sellers, sticker buyers, mug buyers, tumbler buyers, and print-on-demand customers'
+    : 'dads, grandpas, Father’s Day shoppers, fishing families, outdoorsmen, lake-life buyers, gift shoppers, and print-on-demand customers';
+  const themeGuard = type === 'women'
+    ? 'Keep the tone feminine, bold, glam, funny, boutique-ready, outdoorsy, and confident. Do not accidentally switch the concept into a dad/father theme unless the user requests it.'
+    : 'Keep the tone masculine, warm, rustic, funny, Father’s Day friendly, outdoorsy, and gift-ready. Do not accidentally switch the concept into a women-who-fish theme unless the user requests it.';
+
+  const instructions = `CUSTOM GPT INSTRUCTIONS FOR: ${s.title} PROMPT GENERATOR
+
+Purpose:
+You are a Custom GPT built to help users create high-quality, print-ready fishing graphic prompts based on the exact structure of the ${s.title} mini-generator. Your job is to act like a fishing merch prompt strategist, product concept builder, and promotional content assistant. You do not create random generic prompts. You assemble polished outputs from the generator’s selected categories, custom text fields, color picker values, product goal, art style, and use case.
+
+Generator Purpose:
+${s.generatorPurpose}
+
+Current Generator Concept Example:
+Generator Mode: ${s.mode}
+Main Text / Slogan: ${s.slogan}
+Subtext: ${s.subtext}
+Main Object / Fish: ${s.fish}
+Background / Environment: ${s.background}
+Mood / Vibe: ${s.mood}
+Art Style: ${s.style}
+Product Type: ${s.product}
+Finish / Quality: ${s.finish}
+Selected Colors: ${s.colors}
+
+Core Categories:
+Use the generator’s actual category structure: ${s.categories}.
+
+Selection Structure:
+The user selects options from dropdown-style category groups. Each category can be set to a specific option or None. None means the GPT should skip that line instead of forcing it into the final prompt. The GPT should respect the selected mini-generator type, selected fish/object, character details, accessories, props, typography, text placement, background, mood, art style, color palette, special effects, product type, and finish quality.
+
+Custom Text Fields:
+The generator includes Main Text / Slogan, Subtext, Preset Slogan, and Custom Extra Details. Main Text / Slogan should control the visible phrase in the graphic. If Main Text is blank, use the selected Preset Slogan. Subtext should appear only when entered or selected. Custom Extra Details should enhance the concept without overriding important selections.
+
+Prompt Assembly Logic:
+Build one complete, polished AI image prompt using the chosen categories. Hide None values. Keep all details consistent. Mention selected color picker values clearly and tell the AI tool to use those exact colors for typography, glow, background, visual accents, and printable finish. Keep the slogan readable. Keep the fish anatomy clean. Keep the design merch-ready. Do not ignore the selected product type.
+
+Art Style And Output Style:
+The intended output style is bold commercial fishing merch art: glossy vector mascot art, retro lake-life graphics, thick black outlines, clean readable typography, high contrast, sticker-style contour cut, sublimation/DTF-ready design, detailed fish scales and fins, dynamic water motion, and polished printable finish. Adapt the exact flavor based on the selected Art Style and Mood / Vibe.
+
+Use Case:
+Create prompts for POD sellers, digital product creators, fishing merch shops, Father’s Day gift sellers, sticker makers, mug sellers, tumbler designers, shirt designers, decal sellers, and social media product promos. The final output should be useful for AI image tools and product-selling workflows.
+
+Rules:
+- ${themeGuard}
+- Follow selected categories exactly.
+- Never replace user-selected colors with generic palette colors.
+- Keep all visible text readable and spelled correctly.
+- Keep the product use clear: ${s.product}.
+- Keep the design print-ready and commercial.
+- Do not create blurry, warped, messy, unreadable, or off-theme designs.
+- Do not add unrelated themes, extra characters, or random props that fight the selected concept.
+- When creating marketing copy, connect it to the generated prompt, audience, product type, theme, mood, and sales goal.
+- When creating Suno music prompts, make them inspired by the graphic concept, not a second image prompt.`;
+
+  const starters = `1. Create a print-ready ${s.title} prompt using my selected fish, slogan, colors, product type, and art style.
+
+2. Turn this ${s.title} generator concept into a polished AI image prompt for a ${s.product}.
+
+3. Build marketing captions, hashtags, SEO keywords, and ad copy for the fishing product generated from this prompt.
+
+4. Create a Custom GPT-ready prompt system based on this fishing generator’s categories, color pickers, slogan fields, and merch output style.`;
+
+  const knowledge = `KNOWLEDGE BASE FOR: ${s.title} PROMPT GENERATOR
+
+This generator is a 2-in-1 fishing graphic prompt system with separate mini-generators for Women Who Fish and Father’s Day Fishing. Each mini-generator uses category-based selections to build a polished AI image prompt for fishing-themed merchandise.
+
+Active Mini-Generator:
+${s.title}
+
+Primary Audience:
+${audience}
+
+Main Purpose:
+${s.generatorPurpose}
+
+Category Structure:
+${s.categories}
+
+Preset Slogan Bank:
+${s.presetList}
+
+Important Field Logic:
+- Generator Mode sets the overall concept lane.
+- Gender, Ethnicity, Skin Tone, and Age define character identity when a character is included.
+- Main Object / Fish defines the central fish or mascot.
+- Fish Expression / Pose controls action, attitude, and motion.
+- Accessories and Objects / Props add product-relevant details.
+- Typography Style controls the lettering look.
+- Text Placement controls where the slogan appears.
+- Background / Environment controls the setting or printable background style.
+- Mood / Vibe controls emotional direction.
+- Art Style controls the visual finish.
+- Color Palette gives general direction.
+- Color Pickers must override vague palette assumptions when exact values are chosen.
+- Special Effects add polish.
+- Product Type tells the GPT how the artwork will be used.
+- Finish / Quality controls final production readiness.
+- Main Text / Slogan controls the visible headline.
+- Subtext adds optional supporting wording.
+- Preset Slogan acts as fallback text when Main Text is blank.
+- Custom Extra Details should enhance, not override, selected fields.
+
+Prompt Assembly Rules:
+The generator should assemble selections into one coherent product-ready image prompt. It should skip None values, preserve locked or selected fields, mention exact hex colors when available, and include commercial print rules: readable text, clean fish anatomy, no warped details, high contrast, crisp edges, polished finish, and merch-ready layout.
+
+Actual Current Concept Snapshot:
+Generator Mode: ${s.mode}
+Main Text / Slogan: ${s.slogan}
+Subtext: ${s.subtext}
+Main Object / Fish: ${s.fish}
+Background: ${s.background}
+Mood: ${s.mood}
+Art Style: ${s.style}
+Product Type: ${s.product}
+Finish: ${s.finish}
+Colors: ${s.colors}
+
+Connected Features:
+The generator includes main prompt output, 8-second animated video script output, Marketing Content Suite output, Suno Music Controls, saved prompts, smart randomizer, lockable fields, color pickers, copy buttons, clear buttons, random buttons, and variation tools.
+
+Marketing Behavior:
+Marketing content must connect to the main generated prompt. It should create captions, hashtags, SEO keywords, calls to action, email promo copy, Pinterest copy, TikTok copy, Facebook copy, Instagram copy, YouTube copy, and ad copy that are sales-focused, traffic-focused, strategic, persuasive, and relevant to the selected product and audience.
+
+Style Guardrails:
+${themeGuard}
+Use bold commercial fishing t-shirt illustration language, glossy vector mascot art, retro lake-life merch, thick outlines, readable typography, high contrast, sticker-style contour cut, sublimation/DTF-ready output, detailed fish scales, water motion, and polished printable finish unless the selected options intentionally shift the style.`;
+
+  document.getElementById(`${type}_custom_gpt_instructions`).textContent = instructions;
+  document.getElementById(`${type}_custom_gpt_starters`).textContent = starters;
+  document.getElementById(`${type}_custom_gpt_knowledge`).textContent = knowledge;
+}
+
+function copyCustomGPTBlock(type,key){
+  const box = document.getElementById(`${type}_custom_gpt_${key}`);
+  if(!box || !box.textContent.trim()) generateCustomGPTSuite(type);
+  navigator.clipboard.writeText(document.getElementById(`${type}_custom_gpt_${key}`).textContent);
+  const label = CUSTOM_GPT_BLOCKS.find(item => item[0] === key)?.[1] || 'Custom GPT block';
+  alert(label + ' copied.');
+}
+
+function clearCustomGPTSuite(type){
+  CUSTOM_GPT_BLOCKS.forEach(([key])=>{
+    const box = document.getElementById(`${type}_custom_gpt_${key}`);
+    if(box) box.textContent = '';
+  });
+}
+
+
+function scrollToTop(){
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+function scrollToBottom(){
+  window.scrollTo({top:document.body.scrollHeight, behavior:'smooth'});
+}
+
+
+const SUNO_DATA = {
+  genres: [
+    'Afrobeats','Amapiano','Afro-fusion','Alternative R&B','Blues','Classical','Country','Dancehall','Drill','Electronic',
+    'Funk','Gospel','Highlife','Hip-Hop','House','Indie','Jazz','K-Pop','Latin','Lo-fi','Neo-Soul','Pop','R&B','Reggae',
+    'Rock','Soul','Southern Soul','Synthwave','Trap','UK Garage'
+  ],
+  styles: [
+    'Beyoncé-inspired confidence','SZA-inspired dreamy soul','Rihanna-inspired island pop edge','Doja Cat-inspired playful bounce',
+    'H.E.R.-inspired smooth guitar soul','Erykah Badu-inspired neo-soul warmth','Janelle Monáe-inspired futuristic funk',
+    'Solange-inspired airy alt-R&B','Megan Thee Stallion-inspired confident rap energy','Cardi B-inspired bold party energy',
+    'FKA Twigs-inspired experimental texture','Frank Ocean-inspired emotional atmosphere','The Weeknd-inspired cinematic night pop',
+    'Billie Eilish-inspired whispery dark pop','Tyla-inspired amapiano pop bounce','Missy Elliott-inspired futuristic hip-hop',
+    'Alicia Keys-inspired piano soul','Mary J. Blige-inspired soulful power','Summer Walker-inspired intimate R&B',
+    'Tems-inspired Afro-R&B depth','Victoria Monét-inspired polished groove','Lizzo-inspired joyful confidence',
+    'Bruno Mars-inspired funk-pop shine','Prince-inspired electric funk','Lauryn Hill-inspired soulful hip-hop'
+  ],
+  vocals: ['Vocal','Instrumental','Female Vocal','Male Vocal','Group Chant','Rap Verse','Spoken Intro','Choir Background','Hook Only','Ad-Libs']
+};
+
+function makeMusicChip(type, group, label){
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'music-chip';
+  btn.textContent = label;
+  btn.dataset.value = label;
+  btn.onclick = () => btn.classList.toggle('selected');
+  document.getElementById(`${type}_${group}_chips`).appendChild(btn);
+}
+
+function initSunoControls(){
+  ['women','dad'].forEach(type=>{
+    const genreBox = document.getElementById(`${type}_genre_chips`);
+    const styleBox = document.getElementById(`${type}_style_chips`);
+    const vocalBox = document.getElementById(`${type}_vocal_chips`);
+    if(!genreBox || genreBox.dataset.ready) return;
+    SUNO_DATA.genres.forEach(g => makeMusicChip(type,'genre',g));
+    SUNO_DATA.styles.forEach(s => makeMusicChip(type,'style',s));
+    SUNO_DATA.vocals.forEach(v => makeMusicChip(type,'vocal',v));
+    genreBox.dataset.ready = 'true';
+    styleBox.dataset.ready = 'true';
+    vocalBox.dataset.ready = 'true';
+
+    // Sensible defaults so user does not have to type everything.
+    const defaults = type === 'women'
+      ? {genre:['R&B','Pop','Afrobeats'], style:['Beyoncé-inspired confidence','SZA-inspired dreamy soul'], vocal:['Vocal','Female Vocal']}
+      : {genre:['Country','Blues','Southern Soul'], style:['Bruno Mars-inspired funk-pop shine','Alicia Keys-inspired piano soul'], vocal:['Vocal','Male Vocal']};
+
+    defaults.genre.forEach(v => selectChip(type,'genre',v));
+    defaults.style.forEach(v => selectChip(type,'style',v));
+    defaults.vocal.forEach(v => selectChip(type,'vocal',v));
+    updateSunoSliderValues(type);
+  });
+}
+
+function selectChip(type,group,value){
+  document.querySelectorAll(`#${type}_${group}_chips .music-chip`).forEach(chip=>{
+    if(chip.dataset.value === value) chip.classList.add('selected');
+  });
+}
+
+function selectedChips(type,group){
+  return [...document.querySelectorAll(`#${type}_${group}_chips .music-chip.selected`)].map(btn=>btn.dataset.value);
+}
+
+function updateSunoSliderValues(type){
+  ['weirdness','styleInfluence','audioInfluence'].forEach(key=>{
+    const slider = document.getElementById(`${type}_${key}`);
+    const label = document.getElementById(`${type}_${key}_value`);
+    if(slider && label) label.textContent = slider.value + '%';
+  });
+}
+
+function addCustomIfPresent(list, id){
+  const value = document.getElementById(id)?.value.trim();
+  if(value) list.push(value);
+  return list;
+}
+
+function inferMusicMood(type, prompt){
+  const mood = extractPromptValue(prompt,'Mood / Vibe') || (type === 'women' ? 'bold, glam, and playful' : 'warm, proud, and funny');
+  const slogan = extractPromptValue(prompt,'Main Text / Slogan') || (type === 'women' ? 'Reel Girls Fish' : 'Hooked On Dad');
+  const fish = extractPromptValue(prompt,'Main Object / Fish') || 'fishing graphic';
+  const background = extractPromptValue(prompt,'Background / Environment') || 'lake-life fishing theme';
+  const style = extractPromptValue(prompt,'Art Style') || 'retro fishing shirt graphic';
+  const product = extractPromptValue(prompt,'Product Type') || 'merch design';
+  const mode = extractPromptValue(prompt,'Generator Mode') || (type === 'women' ? 'Women Who Fish' : 'Father’s Day Fishing');
+  const colors = extractPromptValue(prompt,'Selected Color Picker Values') || extractPromptValue(prompt,'Color Palette') || 'selected color palette';
+  return {mood, slogan, fish, background, style, product, mode, colors};
+}
+
+function generateSunoMusic(type){
+  const prompt = document.getElementById(type+'_output').textContent || generatePrompt(type);
+  const source = inferMusicMood(type, prompt);
+
+  let genres = selectedChips(type,'genre');
+  let styles = selectedChips(type,'style');
+  let vocals = selectedChips(type,'vocal');
+
+  genres = addCustomIfPresent(genres, `${type}_genre_custom`);
+  styles = addCustomIfPresent(styles, `${type}_style_custom`);
+  vocals = addCustomIfPresent(vocals, `${type}_vocal_custom`);
+
+  if(!genres.length) genres = type === 'women' ? ['R&B','Pop','Afrobeats'] : ['Country','Blues','Southern Soul'];
+  if(!styles.length) styles = type === 'women' ? ['confident glam fishing anthem'] : ['warm Father’s Day fishing anthem'];
+  if(!vocals.length) vocals = ['Vocal'];
+
+  const weirdness = document.getElementById(`${type}_weirdness`).value;
+  const styleInfluence = document.getElementById(`${type}_styleInfluence`).value;
+  const audioInfluence = document.getElementById(`${type}_audioInfluence`).value;
+  const audioCustom = document.getElementById(`${type}_audio_custom`).value.trim();
+
+  const themeLine = type === 'women'
+    ? 'Make it feel like a fun, confident women-who-fish anthem with lake-day energy, sass, sparkle, and merch-ready catchiness.'
+    : 'Make it feel like a warm, funny Father’s Day fishing anthem with dad pride, lake memories, humor, and gift-ready charm.';
+
+  const output = `SUNO MUSIC PROMPT
+
+Source: Main Generated Fishing Prompt
+Mini-Generator Mode: ${source.mode}
+
+Song Concept:
+Create a short, catchy song idea inspired by the main generated prompt. Keep the music tied to the selected fishing character, theme, mood, style, slogan, and concept. Do not create a new image prompt.
+
+Main Theme:
+${themeLine}
+
+Music Genres:
+${genres.join(', ')}
+
+Style Influences:
+${styles.join(', ')}
+Note: These are broad style-influence references only, not literal imitation or impersonation.
+
+Vocal Type:
+${vocals.join(', ')}
+
+Mood And Energy:
+${source.mood}
+
+Main Slogan / Hook Inspiration:
+"${source.slogan}"
+
+Fishing Visual Concept To Match:
+${source.fish}, ${source.background}, ${source.style}, created for ${source.product}.
+Selected Colors To Match:
+${source.colors}.
+
+Audio Settings:
+Weirdness: ${weirdness}%
+Style Influence: ${styleInfluence}%
+Audio Influence: ${audioInfluence}%
+${audioCustom ? 'Custom Audio Direction: ' + audioCustom : ''}
+
+Suno Description:
+A catchy ${genres.join(' + ')} track with ${vocals.join(' + ')} energy, built around the hook "${source.slogan}". The sound should match the ${source.mood} vibe of the fishing graphic, with a polished intro, memorable hook, rhythmic bounce, and clean commercial feel. Keep it short, catchy, and easy to use for product promos, TikTok reels, Facebook posts, and fishing merch videos.
+
+Lyric Direction:
+Use simple, punchy lines about fishing, lake life, confidence, family, humor, and the selected slogan. Keep lyrics brand-safe, easy to sing, and relevant to the main prompt.
+
+Do Not:
+Do not mention unrelated themes. Do not change the main character concept. Do not ignore the fishing theme. Do not imitate any artist exactly. Do not create a full image scene.`;
+
+  document.getElementById(type+'_suno_output').textContent = output;
+}
+
+function copySunoMusic(type){
+  const box = document.getElementById(type+'_suno_output');
+  if(!box.textContent.trim()) generateSunoMusic(type);
+  navigator.clipboard.writeText(document.getElementById(type+'_suno_output').textContent);
+  alert('Suno music prompt copied.');
+}
+
+
+init();
+initSunoControls();
+</script>
+  <!DOCTYPE html>
 <html>
 <head>
   <title>Glam Vault</title>
@@ -167,5 +2210,7 @@
 
   </div>
 
+</body>
+</html>
 </body>
 </html>
